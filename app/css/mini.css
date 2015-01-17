@@ -1,0 +1,129 @@
+@import url("structure.css");
+
+@font-face {
+  font-family: 'Encode Sans Compressed';
+  src: url('../assets/fonts/encodesanscompressed-600-semibold-webfont.eot');
+  src: url('../assets/fonts/encodesanscompressed-600-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.woff') format('woff'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.ttf') format('truetype'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.svg#encodesanscompressed-600-semibold-webfont') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Pulled from our CSS */
+
+.uw-thinstrip {
+  height: 55px;
+  width: 100%;
+  background: #4b2e83;
+  padding-top: 7px;
+  position: relative;
+  z-index: 2;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+.uw-thinstrip .container {
+  position: relative;
+}
+.uw-thinstrip .uw-patch {
+  display: block;
+  text-indent: -9999px;
+  width: 81px;
+  height: 55px;
+  background: url('../assets/svg/uw-sprite-mini.svg') no-repeat 0 -3px transparent;
+  position: absolute;
+  top: -7px;
+  left: 0;
+  z-index: 1;
+}
+.uw-thinstrip .uw-wordmark {
+  display: block;
+  position: absolute;
+  top: 11px;
+  left: 97px;
+  text-indent: -9999px;
+  width: 260px;
+  height: 24px;
+  background: url('../assets/svg/uw-sprite-mini.svg') no-repeat 0 -74px transparent;
+}
+.uw-thinstrip ul.uw-thin-links {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  padding: 0;
+  float: right;
+  list-style: none;
+}
+.uw-thinstrip ul.uw-thin-links li {
+  display: inline-block;
+}
+.uw-thinstrip ul.uw-thin-links li a {
+  font-family: "Encode Sans Compressed", sans-serif;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  float: right;
+  padding: 8px 25px 10px 0;
+  letter-spacing: .01em;
+}
+.uw-thinstrip ul.uw-thin-links li a:after {
+  position: absolute;
+  right: 8px;
+  height: 24px;
+  width: 12px;
+  top: 8px;
+  content: "";
+  background: url('../assets/svg/uw-sprite-mini.svg') no-repeat -696px 0;
+}
+.uw-thinstrip ul.uw-thin-links li a:hover,
+.uw-thinstrip ul.uw-thin-links li a:focus {
+  color: #b7a57a;
+}
+.uw-thinstrip ul.uw-thin-links li:last-child a:after {
+  display: none;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 767px) {
+
+  .uw-thinstrip {
+    padding: 0;
+    height: 45px;
+  }
+  .uw-thinstrip .container {
+    position: static;
+  }
+  .uw-thinstrip .uw-patch {
+    width: 73px;
+    height: 39px;
+    top: 6px;
+    left: -3px;
+    background-size: 630px;
+  }
+  .uw-thinstrip .uw-wordmark {
+    width: 285px;
+    height: 30px;
+    background: url('../assets/svg/uw-sprite-mini.svg') no-repeat 0 -59px rgba(0, 0, 0, 0);
+    margin: 0;
+    float: none;
+    position: absolute;
+    left: 63px;
+    top: 15px;
+    background-size: 697px;
+  }
+  .uw-thinstrip ul.uw-thin-links {
+    height: 50px;
+  }
+  .uw-thinstrip ul.uw-thin-links li {
+    float: none;
+  }
+
+
+}
+@media only screen and (max-width: 767px) {
+  .uw-thinstrip ul.uw-thin-links li {
+    display: none;
+  }
+
+}

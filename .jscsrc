@@ -1,0 +1,6 @@
+{
+  "validateQuoteMarks": "'",
+  "disallowMultipleVarDecl": true,
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties"
+
+}

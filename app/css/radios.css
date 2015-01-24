@@ -1,0 +1,99 @@
+/* Search radio button */
+
+
+.fui-radio-unchecked:before,
+.fui-radio-checked:before {
+  background: url(../assets/svg/uw-sprite.svg) no-repeat 0 0 rgba(0, 0, 0, 0);
+  content: "";
+  width: 22px;
+  height: 22px;
+  top: 2px;
+  left: 0;
+  position: absolute;
+}
+.fui-radio-unchecked:before {
+  background-position: -380px -25px;
+}
+.fui-radio-checked:before {
+  background-position: -404px -25px;
+}
+.checked .fui-radio-unchecked:before {
+  background-position: -379px -25px;
+}
+.checked .fui-radio-checked:before {
+  background-position: -404px 0px;
+}
+
+.radio {
+  margin-bottom: 12px;
+  padding-left: 32px;
+  position: relative;
+  -o-transition: color 0.25s linear;
+  -webkit-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.radio input {
+  outline: none !important;
+  display: none;
+}
+.radio .icons {
+  color: #bdc3c7;
+  display: block;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 20px;
+  text-align: center;
+  line-height: 21px;
+  font-size: 20px;
+  cursor: pointer;
+  -o-transition: color 0.25s linear;
+  -webkit-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}
+.radio .icons .first-icon,
+.radio .icons .second-icon {
+  display: inline-table;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  margin: 0;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.radio .icons .second-icon {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.radio:hover {
+  -o-transition: color 0.25s linear;
+  -webkit-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}
+.radio:hover .first-icon {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.radio:hover .second-icon {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.radio.checked {
+  color: #4b2e83;
+}
+.radio.checked .first-icon {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.radio.checked .second-icon {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  color: #4b2e83;
+  -o-transition: color 0.25s linear;
+  -webkit-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}

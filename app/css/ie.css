@@ -1,0 +1,38 @@
+.fui-radio-unchecked:before,
+.fui-radio-checked:before {
+  background: url(../img/uw-sprite.png) no-repeat 0 0 rgba(0, 0, 0, 0);
+}
+
+
+
+
+.uw-search-bar-container input.search {
+  background: url(../assets/img/search.png) no-repeat center center #808080;
+}
+
+
+
+.dawgdrops-item a.dropdown-toggle:hover:before,
+.dawgdrops-item a.dropdown-toggle:focus:before {
+  background: url('../assets/img/uw-sprite.png') no-repeat -203px -490px;
+}
+.dawgdrops-item a.dropdown-toggle:before {
+  background: url('../assets/img/uw-sprite.png') no-repeat -353px 0px;
+}
+.dawgdrops-item a:after {
+  background: url('../assets/img/slash.png') no-repeat;
+}
+
+
+
+
+
+.uw-thinstrip .uw-patch {
+  background: url(../assets/img/uw-sprite-mini.png) no-repeat 0 -3px transparent;
+}
+.uw-thinstrip .uw-wordmark {
+  background: url(../assets/img/uw-sprite-mini.png) no-repeat 0 -74px transparent;
+}
+.uw-thinstrip ul.uw-thin-links li a:after {
+  background: url(../assets/img/uw-sprite-mini.png) no-repeat -696px 0;
+}

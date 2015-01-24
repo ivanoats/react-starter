@@ -88,10 +88,7 @@ module.exports = function(grunt) {
     hapi: {
       development: {
         options: {
-          server: require('path').resolve('./server'),
-          bases: {
-            '/': require('path').resolve('./build/')
-          }
+          server: require('path').resolve('./server')
         }
       }
     },

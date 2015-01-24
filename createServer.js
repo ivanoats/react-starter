@@ -7,10 +7,10 @@ var _    = require('lodash');
 var createServer = function(host, port, options) {
   var server = new Hapi.Server(options);
 
-  server.connection = {
+  server.connection({
     host: host || 'localhost',
     port: port || 3000
-  };
+  });
 
   server.route({
     method: 'GET',

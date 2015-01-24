@@ -52,16 +52,6 @@ module.exports = function(grunt) {
       }
     },
 
-    browserify: {
-      dev: {
-        options: {
-          debug: true
-        },
-        src: ['<%= project.alljs %>'],
-        dest: 'build/js/app.js'
-      }
-    },
-
     karma: {
       unit: {
         configFile: 'karma.conf.js'
@@ -88,7 +78,8 @@ module.exports = function(grunt) {
     hapi: {
       development: {
         options: {
-          server: require('path').resolve('./server')
+          server: require('path').resolve('./server'),
+          bases: {}
         }
       }
     },

@@ -24,7 +24,7 @@
   "homepage": "https://github.com/UWFosterI/scholarships",
   "dependencies": {
     "hapi": "^8.1.0",
-    "lodash": "^2.4.1"
+    "lodash": "^3.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

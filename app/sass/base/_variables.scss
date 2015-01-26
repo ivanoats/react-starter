@@ -1,5 +1,5 @@
 // Typography
-$sans-serif: $helvetica;
+$sans-serif: $open-sans;
 $serif: $georgia;
 $base-font-family: $sans-serif;
 $header-font-family: $base-font-family;
@@ -22,7 +22,7 @@ $base-border-radius: 3px;
 $base-spacing: $base-line-height * 1em;
 $base-z-index: 0;
 
-// Colors
+// Bitters Default Colors (try not to use, use UW colors below if possible)
 $blue: #477DCA;
 $dark-gray: #333;
 $medium-gray: #999;
@@ -30,6 +30,18 @@ $light-gray: #DDD;
 $light-red: #FBE3E4;
 $light-yellow: #FFF6BF;
 $light-green: #E6EFC2;
+
+// UW Colors
+$dark-purple: #4b2d83;
+$medium-dark-purple: rgba(#9b7bb5,0.5);
+$medium-light-purple: rgba(#b096c5,0.4);
+$light-purple: rgba(#ebe3ef,0.15);
+$dark-gold: #86754e;
+$light-gold: rgba(#c3b6a2,0.5);
+$cool-gray: #444;
+$slate-blue: #165788;
+$yellow-gold: #b88d00;
+$orange-red: #af4b1a;
 
 // Background Color
 $base-background-color: white;
@@ -39,7 +51,7 @@ $base-font-color: $dark-gray;
 $base-accent-color: $blue;
 
 // Link Colors
-$base-link-color: $base-accent-color;
+$base-link-color: $slate-blue;
 $hover-link-color: darken($base-accent-color, 15);
 $base-button-color: $base-link-color;
 $hover-button-color: $hover-link-color;

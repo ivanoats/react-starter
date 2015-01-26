@@ -7,3 +7,36 @@ section {
   aside { @include span-columns(3); }
   article { @include span-columns(9); }
 }
+
+h1 {
+  color: $dark-purple;
+  font-weight: lighter;
+}
+
+body {
+  color: $cool-gray;
+}
+
+$semi-bold: 600;
+
+.social {
+  font-weight: lighter;
+  font-size: 1.67rem;
+}
+
+.social-body {
+  font-weight: $semi-bold;
+}
+
+.menu-1 {
+  font-size: 1.25rem;
+}
+
+.menu-2 {
+  font-size: 1.2rem;
+}
+
+.breadcrumbs {
+  color: $cool-gray;
+  font-size: 0.75rem;
+}

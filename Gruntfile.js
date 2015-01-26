@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       dev: {
         expand: true,
         cwd: 'app/',
-        src: ['*.html', 'css/*.css', 'css/*.css.map'],
+        src: ['*.html', 'css/*.css', 'css/*.css.map', 'assets/**/*'],
         dest: 'build/',
         filter: 'isFile'
       }
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
     },
 
     hapi: {
-      development: {
+      dev: {
         options: {
           server: require('path').resolve('./server'),
           bases: {}
@@ -89,16 +89,20 @@ module.exports = function(grunt) {
         files: '<%= project.app %>/sass/{,*/}*.{scss,sass}',
         tasks: ['build']
       },
+      copy: {
+        files: '<%= project.app %>/*.html',
+        tasks: ['build']
+      },
       test: {
         files: ['<%= project.alljs %>', 'test/front-end/**/*.js'],
-        tasks: ['build:dev', 'karma:unit']
+        tasks: ['build', 'karma:unit']
       }
     }
   }); //end initConfig
 
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev']);
-  grunt.registerTask('test', ['build:dev', 'karma:continuous']);
+  grunt.registerTask('test', ['build', 'karma:continuous']);
   grunt.registerTask('default', ['test', 'watch']);
-  grunt.registerTask('serve', ['build:dev', 'hapi', 'watch']);
+  grunt.registerTask('serve', ['build', 'hapi', 'watch']);
 
 };

@@ -3,7 +3,12 @@
 @font-face {
   font-family: 'Encode Sans Compressed';
   src: url('../assets/fonts/encodesanscompressed-600-semibold-webfont.eot');
-  src: url('../assets/fonts/encodesanscompressed-600-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.woff') format('woff'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.ttf') format('truetype'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.svg#encodesanscompressed-600-semibold-webfont') format('svg');
+  src: url('../assets/fonts/encodesanscompressed-600-semibold-webfont.eot?#iefix')
+    format('embedded-opentype'),
+    url('../assets/fonts/encodesanscompressed-600-semibold-webfont.woff')
+    format('woff'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.ttf')
+    format('truetype'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.svg#encodesanscompressed-600-semibold-webfont')
+    format('svg');
   font-weight: 600;
   font-style: normal;
 }

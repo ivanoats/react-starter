@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       dev: {
         expand: true,
         cwd: 'app/',
-        src: ['*.html', 'css/*.css', 'css/*.css.map', 'assets/**/*'],
+        src: ['*.html', 'css/*.css', 'css/*.css.map', 'assets/**/*', 'config.js', 'js/**/*', 'jspm_packages/**/*'],
         dest: 'build/',
         filter: 'isFile'
       }

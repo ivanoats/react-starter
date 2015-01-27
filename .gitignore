@@ -91,5 +91,7 @@ com_crashlytics_export_strings.xml
 test/testbundle.js
 
 # JSPM packages
-jspm_packages
+app/jspm_packages
+
+# Ctags
 tags

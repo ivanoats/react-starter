@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>Scholarships</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -55,24 +55,19 @@
   </div>
 </div>
 
-<section>
-  <h1>Scholarships Application</h1>
-  <aside>What is it about?</aside>
-  <article>Neat is an open source semantic grid framework built on top of Sass and Bourbon…</article>
-</section>
+<div id="app-container">
 
-<script src="jspm_packages/system.js"></script>
+</div>
+
+<script src="js/jspm_packages/system.js"></script>
 <script src="config.js"></script>
 <script>
   // Identical to writing System.baseURL = ...
   System.config({
-
-    // set all requires to "lib" for library code
     baseURL: '/js/'
-
  });
 
-  System.import('main');
+  System.import('main.jsx!');
 </script>
 
 </body>

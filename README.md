@@ -1,16 +1,12 @@
-# Modular Boilerplate
-## For Full Stack JavaScript Apps
+# Scholarships
 
-[![Build Status](https://travis-ci.org/ivanoats/modular-boilerplate.svg)](https://travis-ci.org/ivanoats/modular-boilerplate)
-[![Code Climate](https://codeclimate.com/github/ivanoats/modular-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/ivanoats/modular-boilerplate)
-
-A boilerplate for full-stack JavaScript web apps using CommonJS (Browserify) modules, Grunt, a simple, extensible, ExpressJS sever, and Jasmine Testing Framework with Karma.
+A Scholarships management web application based on needs at UW Foster School of Business. Ideally it will useful for other departments and universities.
 
 ## Install
 
 Clone this repo, then:
 
-`npm install && bower install`
+`npm install && jspminstall`
 
 ## Contributing
 

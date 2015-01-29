@@ -1,6 +1,8 @@
 @import "bourbon/bourbon";
-@import "base/base";
+@import "base/base"; //Thoughtbot bitters with only a few customizations for UW
 @import "neat/neat";
+@import "refills/card";
+@import "colors";
 
 section {
   @include outer-container;
@@ -18,6 +20,8 @@ body {
 }
 
 $semi-bold: 600;
+
+// UW Styles based on Web Site Styleguide PDF from Foster Redesign 2015
 
 .social {
   font-weight: lighter;

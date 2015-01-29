@@ -22,7 +22,7 @@ $base-border-radius: 3px;
 $base-spacing: $base-line-height * 1em;
 $base-z-index: 0;
 
-// Bitters Default Colors (try not to use, use UW colors below if possible)
+// Bitters Default Colors (try not to use, use UW colors in _colors.scss if possible)
 $blue: #477DCA;
 $dark-gray: #333;
 $medium-gray: #999;
@@ -53,7 +53,7 @@ $base-accent-color: $blue;
 // Link Colors
 $base-link-color: $slate-blue;
 $hover-link-color: darken($base-accent-color, 15);
-$base-button-color: $base-link-color;
+$base-button-color: $dark-gold;
 $hover-button-color: $hover-link-color;
 
 // Flash Colors

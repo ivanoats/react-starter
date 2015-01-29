@@ -1,0 +1,38 @@
+// See base/_variables.scss for actual color definitions, they have to be defined there
+// for bitters scss to use them
+//
+//$dark-purple: #4b2d83;
+//$medium-dark-purple: rgba(#9b7bb5,0.5);
+//$medium-light-purple: rgba(#b096c5,0.4);
+//$light-purple: rgba(#ebe3ef,0.15);
+//$dark-gold: #86754e;
+//$light-gold: rgba(#c3b6a2,0.5);
+//$cool-gray: #444;
+//$slate-blue: #165788;
+//$yellow-gold: #b88d00;
+//$orange-red: #af4b1a;
+
+.color-swatch {
+  display: block;
+  height: 10rem;
+}
+
+@each $color-name, $color in (
+    dark-purple: $dark-purple,
+    medium-dark-purple: $medium-dark-purple,
+    medium-light-purple: $medium-light-purple,
+    light-purple: $light-purple,
+    dark-gold: $dark-gold,
+    light-gold: $light-gold,
+    cool-gray: $cool-gray,
+    slate-blue: $slate-blue,
+    yellow-gold: $yellow-gold,
+    orange-red: $orange-red
+) {
+  .bg-#{$color-name} {
+    background-color: #{$color};
+  }
+  .color-#{$color-name} {
+    color: #{$color}
+  }
+}

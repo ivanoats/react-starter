@@ -19,7 +19,10 @@ module.exports = function(grunt) {
       app: ['app'],
       scss: ['<%= project.app %>/sass/style.scss'],
       css: ['<%= project.app %>/css/**/*.css'],
-      alljs: ['<%= project.app %>/js/**/*.js']
+      alljs: [
+        '<%= project.app %>/js/**/*.js',
+        '<%= project.app %>/js/**/*.jsx'
+        ]
     },
 
     clean: {

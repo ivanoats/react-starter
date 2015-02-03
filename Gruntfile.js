@@ -10,7 +10,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-hapi');
+  grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-webdriver');
 
   grunt.initConfig({
@@ -91,11 +91,27 @@ module.exports = function(grunt) {
       }
     },
 
-    hapi: {
+    express: {
+      options: {
+        // Override defaults here
+        output: 'listening',
+        background: true,
+      },
       dev: {
         options: {
-          server: require('path').resolve('./server'),
-          bases: {}
+          script: 'server.js'
+        }
+      },
+      prod: {
+        options: {
+          script: 'server.js',
+          node_env: 'production'
+        }
+      },
+      test: {
+        options: {
+          script: 'server.js',
+          node_env: 'test'
         }
       }
     },
@@ -106,7 +122,7 @@ module.exports = function(grunt) {
         tasks: ['build']
       },
       copy: {
-        files: '<%= project.app %>/*.html',
+        files: ['<%= project.app %>/*.html','server.js'],
         tasks: ['build']
       },
       test: {
@@ -117,8 +133,8 @@ module.exports = function(grunt) {
   }); //end initConfig
 
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev']);
-  grunt.registerTask('test', ['build', 'hapi', 'webdriver', 'karma:continuous']);
+  grunt.registerTask('test', ['build', 'express:dev', 'webdriver', 'karma:continuous']);
   grunt.registerTask('default', ['test', 'watch']);
-  grunt.registerTask('serve', ['build', 'hapi', 'watch']);
+  grunt.registerTask('serve', ['build', 'express:dev', 'watch']);
 
 };

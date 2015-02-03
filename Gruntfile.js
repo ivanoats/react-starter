@@ -11,6 +11,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-hapi');
+  grunt.loadNpmTasks('grunt-webdriver');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -66,6 +67,18 @@ module.exports = function(grunt) {
       }
     },
 
+    webdriver: {
+      acceptance: {
+        tests: ['test/acceptance/*-spec.js'],
+        options: {
+          timeout: 10000000,
+          desiredCapabilities: {
+            browserName: 'chrome'
+          }
+        }
+      }
+    },
+
     sass: {
       dev: {
         options: {
@@ -104,7 +117,7 @@ module.exports = function(grunt) {
   }); //end initConfig
 
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev']);
-  grunt.registerTask('test', ['build', 'karma:continuous']);
+  grunt.registerTask('test', ['build', 'hapi', 'webdriver', 'karma:continuous']);
   grunt.registerTask('default', ['test', 'watch']);
   grunt.registerTask('serve', ['build', 'hapi', 'watch']);
 

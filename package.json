@@ -28,6 +28,7 @@
     "lodash": "^3.0.0"
   },
   "devDependencies": {
+    "blanket": "^1.1.6",
     "chai": "^1.10.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.2.1",
@@ -48,6 +49,11 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "mocha": "^2.1.0",
     "supertest": "^0.15.0"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "server.js"
+    }
   },
   "jspm": {
     "directories": {

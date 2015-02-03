@@ -40,6 +40,8 @@
     "grunt-express-server": "^0.4.19",
     "grunt-jscs": "^1.2.0",
     "grunt-karma": "^0.10.1",
+    "grunt-mocha-cov": "^0.3.0",
+    "grunt-simple-mocha": "^0.4.0",
     "grunt-webdriver": "^0.4.8",
     "jspm": "^0.10.6",
     "karma": "^0.12.23",

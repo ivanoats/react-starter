@@ -12,6 +12,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-webdriver');
+  grunt.loadNpmTasks('grunt-simple-mocha');
+  grunt.loadNpmTasks('grunt-mocha-cov');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -56,6 +58,49 @@ module.exports = function(grunt) {
       }
     },
 
+
+    mochacov: {
+      coverage: {
+        options: {
+          reporter: 'mocha-term-cov-reporter',
+          coverage: true
+        }
+      },
+      coveralls: {
+        options: {
+          coveralls: {
+            serviceName: 'travis-ci'
+          }
+        }
+      },
+      unit: {
+        options: {
+          reporter: 'spec',
+          require: ['chai']
+        }
+      },
+      html: {
+        options: {
+          reporter: 'html-cov',
+          require: ['chai']
+        }
+      },
+      options: {
+        files: 'test/server/*-spec.js',
+        ui: 'bdd',
+        colors: true
+      }
+    },
+
+    simplemocha: {
+      all: {
+        options: {
+
+        },
+        src: ['test/server/**/*-spec.js']
+      }
+    },
+
     karma: {
       unit: {
         configFile: 'karma.conf.js'
@@ -95,7 +140,7 @@ module.exports = function(grunt) {
       options: {
         // Override defaults here
         output: 'listening',
-        background: true,
+        background: true
       },
       dev: {
         options: {
@@ -133,7 +178,7 @@ module.exports = function(grunt) {
   }); //end initConfig
 
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev']);
-  grunt.registerTask('test', ['build', 'express:dev', 'webdriver', 'karma:continuous']);
+  grunt.registerTask('test', ['build', 'simplemocha', 'express:test', 'webdriver', 'karma:continuous']);
   grunt.registerTask('default', ['test', 'watch']);
   grunt.registerTask('serve', ['build', 'express:dev', 'watch']);
 

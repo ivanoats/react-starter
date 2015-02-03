@@ -16,7 +16,17 @@ app.get('/heartbeat', function(req,res) {
 // static route
 app.use(express.static(__dirname + '/build'));
 
-var server = app.listen(process.env.PORT || 3000, function() {
+var port;
+if (process.env.port) {
+  port = process.env.port;
+} else if (process.env.NODE_ENV === 'test') {
+  port = 3001;
+} else {
+  port = 3000;
+}
+console.log('port was set at %s', port);
+
+var server = app.listen(port, function() {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Express app listening at http://%s:%s', host, port);

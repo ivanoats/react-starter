@@ -48,6 +48,8 @@
     "karma-chrome-launcher": "^0.1.4",
     "karma-ie-launcher": "^0.1.5",
     "karma-jasmine": "^0.3.1",
+    "karma-jspm": "^1.1.4",
+    "karma-mocha": "^0.1.10",
     "karma-phantomjs-launcher": "^0.1.4",
     "mocha": "^2.1.0",
     "supertest": "^0.15.0"

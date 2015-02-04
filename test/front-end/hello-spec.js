@@ -17,8 +17,8 @@ describe('HelloComponent', function() {
       <HelloComponent />
     );
 
-    //var helloFound = TestUtils.findRenderedDomComponentWithClass(hello, 'hello');
+    var helloFound = TestUtils.findRenderedDomComponentWithClass(hello, 'hello');
 
-    //expect(helloFound.getDOMNode().textContent).to.equal('Hello World');
+    expect(helloFound.getDOMNode().textContent).to.equal('Hello World');
   });
 });

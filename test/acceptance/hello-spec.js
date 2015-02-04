@@ -11,6 +11,9 @@ describe('acceptance test', function() {
     browser
       .url('http://localhost:' + port)
       .getTitle(function(err, title) {
+        if (err) {
+          throw err;
+        }
         expect(title).to.equal('Scholarships');
       })
       .call(done);

@@ -1,5 +1,6 @@
 'use strict';
 
+var path = require('path');
 var express = require('express');
 var compression = require('compression');
 
@@ -9,12 +10,12 @@ var app = express();
 app.use(compression());
 
 // is it ALIVE?!
-app.get('/heartbeat', function(req,res) {
+app.get('/heartbeat', function(req, res) {
   res.status(200).json('OK');
 });
 
 // static route
-app.use(express.static(__dirname + '/build'));
+app.use(express.static(path.join(__dirname, '/build')));
 
 var port;
 if (process.env.port) {

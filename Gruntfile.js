@@ -16,6 +16,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-cov');
   grunt.loadNpmTasks('grunt-watchify');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-eslint');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -44,6 +45,19 @@ module.exports = function(grunt) {
         dest: 'build/',
         filter: 'isFile'
       }
+    },
+
+    eslint: {
+      options: {
+        configFile: '.eslintrc'
+      },
+      target: [
+        '*.js',
+        'app/js/*.js',
+        'test/acceptance/*-spec.js',
+        'test/front-end/*-spec.js',
+        'test/server/heartbeat-spec.js'
+      ]
     },
 
     mochacov: {
@@ -147,7 +161,7 @@ module.exports = function(grunt) {
           compass: false
         },
         files: {
-          'build/css/style.css':'<%= project.scss %>'
+          'build/css/style.css': '<%= project.scss %>'
         }
       }
     },
@@ -163,6 +177,7 @@ module.exports = function(grunt) {
           script: 'server.js'
         }
       },
+      /*eslint-disable */
       prod: {
         options: {
           script: 'server.js',
@@ -175,6 +190,7 @@ module.exports = function(grunt) {
           node_env: 'test'
         }
       }
+      /*eslint-enable */
     },
 
     watch: {

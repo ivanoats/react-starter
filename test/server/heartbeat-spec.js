@@ -1,6 +1,6 @@
 'use strict';
 
-var app= require('../../server.js');
+var app = require('../../server.js');
 var request = require('supertest');
 
 describe('heartbeat api', function() {

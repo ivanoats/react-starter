@@ -3,7 +3,12 @@
 var expect = require('chai').expect;
 
 describe('HelloComponent', function() {
-  it('says hello in a css class of hello', function() {
+
+  it('passes a very simple test', function() {
+    expect(1 + 2).to.equal(3);
+  });
+
+  it('says hello in a class of hello', function() {
     var React = require('react/addons');
     var HelloComponent = require( '../../app/js/components/HelloComponent.js');
     var TestUtils = React.addons.TestUtils;

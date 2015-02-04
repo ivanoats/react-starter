@@ -23,11 +23,14 @@ module.exports = function(config) {
 
     browserify: {
       debug: true,
-      transform: ['reactify']
+      transform: [ ['reactify', {'es6': true}] ]
     },
 
     // list of files / patterns to load in the browser
-    files: [],
+    files: [
+      'node_modules/chai/chai.js',
+      'test/front-end/*-spec.js'
+    ],
 
     // list of files to exclude
     exclude: [
@@ -37,7 +40,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/front-end/*-test.js': []
+      'test/**/*-spec.js': ['browserify']
     },
 
     // test results reporter to use
@@ -56,7 +59,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
@@ -64,6 +67,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    //singleRun: true
   });
 };

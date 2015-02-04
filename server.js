@@ -15,7 +15,7 @@ app.get('/heartbeat', function(req, res) {
 });
 
 // static route
-app.use(express.static(path.join(__dirname, '/build')));
+app.use(express.static(path.join(__dirname)));
 
 var port;
 if (process.env.port) {

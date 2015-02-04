@@ -1,5 +1,7 @@
 'use strict';
 
+var reactify = require('reactify');
+
 module.exports = function(grunt) {
 
   grunt.option('stack', true);
@@ -7,13 +9,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-jscs');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-webdriver');
   grunt.loadNpmTasks('grunt-simple-mocha');
   grunt.loadNpmTasks('grunt-mocha-cov');
+  grunt.loadNpmTasks('grunt-watchify');
+  grunt.loadNpmTasks('grunt-browserify');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -43,21 +45,6 @@ module.exports = function(grunt) {
         filter: 'isFile'
       }
     },
-
-    jshint: {
-      all: ['<%= project.alljs %>', 'Gruntfile.js', 'server.js'],
-      options: {
-        jshintrc: true
-      }
-    },
-
-    jscs: {
-      src: ['<%= project.alljs %>', 'server.js', 'Gruntfile.js'],
-      options: {
-        config: '.jscsrc'
-      }
-    },
-
 
     mochacov: {
       coverage: {
@@ -124,6 +111,31 @@ module.exports = function(grunt) {
       }
     },
 
+    watchify: {
+      options: {
+        debug: true,
+        callback: function(b) {
+          b.transform({es6: true}, reactify);
+          return b;
+        }
+      },
+      development: {
+        src: './app/js/**/*.js',
+        dest: 'build/js/bundle.js'
+      }
+    },
+
+    browserify: {
+      dev: {
+        src: ['app/**/*.js'],
+        dest: 'build/js/bundle.js',
+        options: {
+          debug: true,
+          transform: ['reactify']
+        }
+      }
+    },
+
     sass: {
       dev: {
         options: {
@@ -139,8 +151,8 @@ module.exports = function(grunt) {
     express: {
       options: {
         // Override defaults here
-        output: 'listening',
-        background: true
+        output: 'listening'
+        //background: true
       },
       dev: {
         options: {
@@ -167,7 +179,7 @@ module.exports = function(grunt) {
         tasks: ['build']
       },
       copy: {
-        files: ['<%= project.app %>/*.html','server.js'],
+        files: ['<%= project.app %>/*.html', 'server.js'],
         tasks: ['build']
       },
       test: {
@@ -177,7 +189,7 @@ module.exports = function(grunt) {
     }
   }); //end initConfig
 
-  grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev']);
+  grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev', 'browserify:dev']);
   grunt.registerTask('test', ['build', 'simplemocha', 'express:test', 'webdriver', 'karma:continuous']);
   grunt.registerTask('default', ['test', 'watch']);
   grunt.registerTask('serve', ['build', 'express:dev', 'watch']);

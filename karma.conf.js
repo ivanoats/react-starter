@@ -19,8 +19,12 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jspm','mocha'],
+    frameworks: ['browserify', 'mocha'],
 
+    browserify: {
+      debug: true,
+      transform: ['reactify']
+    },
 
     // list of files / patterns to load in the browser
     files: [],
@@ -29,10 +33,6 @@ module.exports = function(config) {
     exclude: [
       '**/*.swp'
     ],
-
-    jspm: {
-      loadFiles: ['app/js/**/*.js', 'test/front-end/*-spec.js']
-    },
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor

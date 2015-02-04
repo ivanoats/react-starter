@@ -1,5 +1,5 @@
 'use strict';
 
-export function hello() {
+module.exports = function hello() {
   console.log('hello world');
 }

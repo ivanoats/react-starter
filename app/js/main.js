@@ -1,11 +1,11 @@
 'use strict';
 
-import React from 'react';
+var React = require('react');
 
-import HelloComponent from './components/HelloComponent';
+var HelloComponent = require('./components/HelloComponent');
 
-console.log('dynamically loaded');
+console.log('from browserify yeah');
 
 React.render(
-  HelloComponent(), document.getElementById('app-container')
+  <HelloComponent />, document.getElementById('app-container')
 );

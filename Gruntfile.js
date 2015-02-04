@@ -148,8 +148,10 @@ module.exports = function(grunt) {
         src: ['app/**/*.js'],
         dest: 'build/js/bundle.js',
         options: {
-          debug: true,
-          transform: ['reactify']
+          browserifyOptions: {
+            debug: true
+          },
+          transform: [ ['reactify', {'es6': true} ] ]
         }
       }
     },

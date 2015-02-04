@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 
 describe('HelloComponent', function() {
 
-  it('passes a very simple test', function() {
+  it('passes a quite simple test', function() {
     expect(1 + 2).to.equal(3);
   });
 
@@ -17,7 +17,7 @@ describe('HelloComponent', function() {
       <HelloComponent />
     );
 
-    var helloFound = TestUtils.findRenderedDomComponentWithClass(hello, 'hello');
+    var helloFound = TestUtils.findRenderedDOMComponentWithClass(hello, 'hello');
 
     expect(helloFound.getDOMNode().textContent).to.equal('Hello World');
   });

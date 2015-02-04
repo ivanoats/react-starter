@@ -29,6 +29,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'node_modules/chai/chai.js',
+      'test/front-end/phantomjs-bind-polyfill.js',
       'test/front-end/*-spec.js'
     ],
 

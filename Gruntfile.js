@@ -121,24 +121,11 @@ module.exports = function(grunt) {
       }
     },
 
-    watchify: {
-      options: {
-        debug: true,
-        callback: function(b) {
-          b.transform({es6: true}, reactify);
-          return b;
-        }
-      },
-      development: {
-        src: './app/js/**/*.js',
-        dest: 'build/js/bundle.js'
-      }
-    },
-
     browserify: {
       dev: {
         src: ['app/**/*.js'],
         dest: 'build/js/bundle.js',
+        watch: true,
         options: {
           browserifyOptions: {
             debug: true

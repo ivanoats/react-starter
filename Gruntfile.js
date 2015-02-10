@@ -1,7 +1,5 @@
 'use strict';
 
-var reactify = require('reactify');
-
 module.exports = function(grunt) {
 
   grunt.option('stack', true);
@@ -192,7 +190,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev', 'browserify:dev']);
   grunt.registerTask('test:acceptance', ['build', 'express:dev', 'webdriver']);
-  grunt.registerTask('test', ['build', 'simplemocha', 'express:dev', 'webdriver', 'karma:continuous']);
+  grunt.registerTask('test', ['eslint', 'build', 'simplemocha', 'express:dev', 'webdriver', 'karma:continuous']);
   grunt.registerTask('default', ['test', 'watch']);
   grunt.registerTask('serve', ['build', 'express:dev', 'watch']);
 

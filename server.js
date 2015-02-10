@@ -18,7 +18,7 @@ app.get('/heartbeat', function(req, res) {
 });
 
 // to ease testing
-app.redirect('/','/build');
+app.redirect('/', '/build');
 
 // static route
 app.use(express.static(path.join(__dirname)));

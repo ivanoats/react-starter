@@ -1,18 +1,24 @@
 'use strict';
 
-var path = require('path');
-var express = require('express');
+var path        = require('path');
+var express     = require('express');
 var compression = require('compression');
-
-var app = express();
+var redirect    = require('express-redirect');
+var app         = express();
 
 // GZip compression
 app.use(compression());
+
+// Mount redirect plugin
+redirect(app);
 
 // is it ALIVE?!
 app.get('/heartbeat', function(req, res) {
   res.status(200).json('OK');
 });
+
+// to ease testing
+app.redirect('/','/build');
 
 // static route
 app.use(express.static(path.join(__dirname)));

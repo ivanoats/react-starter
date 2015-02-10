@@ -5,18 +5,10 @@ var reactify = require('reactify');
 module.exports = function(grunt) {
 
   grunt.option('stack', true);
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-express-server');
-  grunt.loadNpmTasks('grunt-webdriver');
-  grunt.loadNpmTasks('grunt-simple-mocha');
-  grunt.loadNpmTasks('grunt-mocha-cov');
-  grunt.loadNpmTasks('grunt-watchify');
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-eslint');
+
+  require('time-grunt')(grunt);
+
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -212,7 +204,8 @@ module.exports = function(grunt) {
   }); //end initConfig
 
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev', 'browserify:dev']);
-  grunt.registerTask('test', ['build', 'simplemocha', 'express:test', 'webdriver', 'karma:continuous']);
+  grunt.registerTask('test:acceptance', ['build', 'express:dev', 'webdriver']);
+  grunt.registerTask('test', ['build', 'simplemocha', 'express:dev', 'webdriver', 'karma:continuous']);
   grunt.registerTask('default', ['test', 'watch']);
   grunt.registerTask('serve', ['build', 'express:dev', 'watch']);
 

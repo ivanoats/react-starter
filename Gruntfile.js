@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       dev: {
         expand: true,
         cwd:    'app/',
-        src:    ['*.html', 'css/*.css', 'css/*.css.map', 'assets/**/*', 'config.js', 'js/**/*', 'jspm_packages/**/*'],
+        src:    ['*.html', 'css/*.css', 'css/*.css.map', 'assets/**/*'],
         dest:   'build/',
         filter: 'isFile'
       }
@@ -128,6 +128,16 @@ module.exports = function(grunt) {
         src: ['app/**/*.js'],
         dest: 'build/js/bundle.js',
         options: {
+          browserifyOptions: {
+            debug: true
+          },
+          transform: ['6to5ify']
+        }
+      },
+      watchify: {
+        src: ['app/**/*.js'],
+        dest: 'build/js/bundle.js',
+        options: {
           watch: true,
           keepAlive: true,
           browserifyOptions: {
@@ -177,21 +187,31 @@ module.exports = function(grunt) {
       /*eslint-enable */
     },
 
+    concurrent: {
+      watch: {
+        tasks: ['watch', 'browserify:watchify'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
+
     watch: {
       sass: {
         files: '<%= project.app %>/sass/{,*/}*.{scss,sass}',
         tasks: ['sass:dev']
       },
       copy: {
-        files: ['<%= project.app %>/*.html', '<%= project.app %>/assets/**/*', 'server.js'],
+        files: ['<%= project.app %>/*.html', '<%= project.app %>/assets/**/*'],
         tasks: ['copy:dev']
       },
-      /*
-      browserify: {
-        files: ['<%= project.alljs %>'],
-        tasks: ['browserify:dev']
+      express: {
+        files:  [ 'server.js'],
+        tasks:  [ 'express:dev:stop', 'express:dev' ],
+        options: {
+          spawn: false
+        }
       },
-      */
       testServer: {
         files: ['test/server/**/*.js'],
         tasks: ['simplemocha']
@@ -206,7 +226,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev', 'browserify:dev']);
   grunt.registerTask('test:acceptance', ['build', 'express:dev', 'webdriver']);
   grunt.registerTask('test', ['eslint', 'build', 'simplemocha', 'express:dev', 'webdriver', 'karma:unit']);
-  grunt.registerTask('default', ['test', 'watch']);
-  grunt.registerTask('serve', ['build', 'express:dev', 'watch']);
+  grunt.registerTask('default', ['test', 'concurrent:watch']);
+  grunt.registerTask('serve', ['express:dev', 'concurrent:watch']);
 
 };

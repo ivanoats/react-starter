@@ -4,7 +4,7 @@ const React = require('react');
 
 const HelloComponent = require('./components/HelloComponent');
 
-console.log('from browserify ok');
+console.log('from browserify');
 
 React.render(
   <HelloComponent />, document.getElementById('app-container')

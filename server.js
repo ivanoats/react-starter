@@ -23,14 +23,7 @@ app.redirect('/', '/build');
 // static route
 app.use(express.static(path.join(__dirname)));
 
-var port;
-if (process.env.port) {
-  port = process.env.port;
-} else if (process.env.NODE_ENV === 'test') {
-  port = 3001;
-} else {
-  port = 3000;
-}
+var port = process.env.PORT || 3000;
 
 app.server = app.listen(port, function() {
   console.log('Express app listening at port %s', app.server.address().port );

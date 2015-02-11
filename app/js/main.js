@@ -1,10 +1,10 @@
 'use strict';
 
-var React = require('react');
+const React = require('react');
 
-var HelloComponent = require('./components/HelloComponent');
+const HelloComponent = require('./components/HelloComponent');
 
-console.log('from browserify yeah');
+console.log('from browserify ok');
 
 React.render(
   <HelloComponent />, document.getElementById('app-container')

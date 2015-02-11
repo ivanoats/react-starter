@@ -6,15 +6,18 @@ module.exports = function(grunt) {
 
   require('time-grunt')(grunt);
 
-  require('jit-grunt')(grunt)
+  require('jit-grunt')(grunt, {
+    simplemocha: 'grunt-simple-mocha',
+    express:     'grunt-express-server'
+  });
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
     project: {
-      app: ['app'],
-      scss: ['<%= project.app %>/sass/style.scss'],
-      css: ['<%= project.app %>/css/**/*.css'],
+      app:   ['app'],
+      scss:  ['<%= project.app %>/sass/style.scss'],
+      css:   ['<%= project.app %>/css/**/*.css'],
       alljs: [
         '<%= project.app %>/js/**/*.js',
         '<%= project.app %>/js/**/*.jsx'
@@ -30,9 +33,9 @@ module.exports = function(grunt) {
     copy: {
       dev: {
         expand: true,
-        cwd: 'app/',
-        src: ['*.html', 'css/*.css', 'css/*.css.map', 'assets/**/*', 'config.js', 'js/**/*', 'jspm_packages/**/*'],
-        dest: 'build/',
+        cwd:    'app/',
+        src:    ['*.html', 'css/*.css', 'css/*.css.map', 'assets/**/*', 'config.js', 'js/**/*', 'jspm_packages/**/*'],
+        dest:   'build/',
         filter: 'isFile'
       }
     },
@@ -94,7 +97,8 @@ module.exports = function(grunt) {
 
     karma: {
       unit: {
-        configFile: 'karma.conf.js'
+        configFile: 'karma.conf.js',
+        singleRun: true
       },
       chrome: {
         configFile: 'karma.conf.js',
@@ -111,7 +115,7 @@ module.exports = function(grunt) {
       acceptance: {
         tests: ['test/acceptance/*-spec.js'],
         options: {
-          timeout: 10000000,
+          timeout: 10000,
           desiredCapabilities: {
             browserName: 'chrome'
           }
@@ -123,12 +127,13 @@ module.exports = function(grunt) {
       dev: {
         src: ['app/**/*.js'],
         dest: 'build/js/bundle.js',
-        watch: true,
         options: {
+          watch: true,
+          keepAlive: true,
           browserifyOptions: {
             debug: true
           },
-          transform: [ ['reactify', {'es6': true} ] ]
+          transform: ['6to5ify']
         }
       }
     },
@@ -175,22 +180,32 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: '<%= project.app %>/sass/{,*/}*.{scss,sass}',
-        tasks: ['build']
+        tasks: ['sass:dev']
       },
       copy: {
-        files: ['<%= project.app %>/*.html', 'server.js'],
-        tasks: ['build']
+        files: ['<%= project.app %>/*.html', '<%= project.app %>/assets/**/*', 'server.js'],
+        tasks: ['copy:dev']
       },
-      test: {
-        files: ['<%= project.alljs %>', 'test/front-end/**/*.js', 'test/server/**/*.js'],
-        tasks: ['build', 'simplemocha', 'karma:unit']
+      /*
+      browserify: {
+        files: ['<%= project.alljs %>'],
+        tasks: ['browserify:dev']
+      },
+      */
+      testServer: {
+        files: ['test/server/**/*.js'],
+        tasks: ['simplemocha']
+      },
+      testFrontEnd: {
+        files: ['test/front-end/**/*.js'],
+        tasks: ['karma:unit']
       }
     }
   }); //end initConfig
 
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev', 'browserify:dev']);
   grunt.registerTask('test:acceptance', ['build', 'express:dev', 'webdriver']);
-  grunt.registerTask('test', ['eslint', 'build', 'simplemocha', 'express:dev', 'webdriver', 'karma:continuous']);
+  grunt.registerTask('test', ['eslint', 'build', 'simplemocha', 'express:dev', 'webdriver', 'karma:unit']);
   grunt.registerTask('default', ['test', 'watch']);
   grunt.registerTask('serve', ['build', 'express:dev', 'watch']);
 

@@ -5,7 +5,7 @@ var expect = require('chai').expect;
 describe('HelloComponent', function() {
 
   it('passes a quite simple test', function() {
-    expect(1 + 2).to.equal(3);
+    expect(1 + 4).to.equal(5);
   });
 
   it('says hello in a class of hello', function() {

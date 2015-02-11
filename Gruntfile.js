@@ -182,8 +182,8 @@ module.exports = function(grunt) {
         tasks: ['build']
       },
       test: {
-        files: ['<%= project.alljs %>', 'test/front-end/**/*.js'],
-        tasks: ['build', 'karma:unit']
+        files: ['<%= project.alljs %>', 'test/front-end/**/*.js', 'test/server/**/*.js'],
+        tasks: ['build', 'simplemocha', 'karma:unit']
       }
     }
   }); //end initConfig

@@ -32,10 +32,8 @@ if (process.env.port) {
   port = 3000;
 }
 
-var server = app.listen(port, function() {
-  var host = server.address().address;
-  var thePort = server.address().port;
-  console.log('Express app listening at http://%s:%s', host, thePort);
+app.server = app.listen(port, function() {
+  console.log('Express app listening at port %s', app.server.address().port );
 });
 
 // Export app in module for testing

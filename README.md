@@ -12,6 +12,7 @@ This template includes:
 Clone this repo, then:
 
 `npm install`
+
 `bundle install`
 
 ## Tests

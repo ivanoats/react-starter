@@ -21,9 +21,10 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['browserify', 'mocha'],
 
+    // TODO replace with webpack
     browserify: {
       debug:     true,
-      transform: ['6to5ify']
+      transform: ['babelify']
     },
 
     // list of files / patterns to load in the browser

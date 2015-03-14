@@ -131,7 +131,7 @@ module.exports = function(grunt) {
           browserifyOptions: {
             debug: true
           },
-          transform: ['6to5ify']
+          transform: ['babelify']
         }
       },
       watchify: {
@@ -225,7 +225,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'copy:dev', 'browserify:dev']);
   grunt.registerTask('test:acceptance', ['build', 'express:dev', 'webdriver']);
-  grunt.registerTask('test', ['eslint', 'build', 'simplemocha', 'express:dev', 'webdriver', 'karma:unit']);
+  grunt.registerTask('test', ['build', 'simplemocha', 'express:dev', 'webdriver', 'karma:unit']);
   grunt.registerTask('default', ['test', 'concurrent:watch']);
   grunt.registerTask('serve', ['express:dev', 'concurrent:watch']);
 

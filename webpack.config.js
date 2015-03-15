@@ -8,7 +8,7 @@ module.exports = {
   context: path.join(__dirname, 'client'),
   entry: './js/main.js',
   output: {
-    path: path.join(__dirname, 'app/js-dist'),
+    path: path.join(__dirname, 'build/js-dist'),
     filename: 'bundle.js'
   },
   module: {

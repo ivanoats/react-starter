@@ -19,7 +19,7 @@ var reload      = browserSync.reload;
 var buildCfg    = require('./webpack.config');
 var buildDevCfg = require('./webpack.dev-config');
 
-var src  = './app/';
+var src  = './client/';
 var dest = './build/';
 
 // ----------------------------------------------------------------------------
@@ -183,8 +183,8 @@ gulp.task('build:dev', ['copy', 'sass', 'webpack']);
 
 gulp.task('watch', ['build:dev', 'browser-sync'], function() {
   gulp.watch([
-    'app/js/**/*.{js,jsx}',
-    'app/sass/**/*.scss'
+    path.join(src, 'js', '**', '*.{js,jsx}'),
+    path.join(src, 'sass', '**', '*.scss')
   ], ['webpack']).on('change', logReload);
 });
 
@@ -193,7 +193,7 @@ gulp.task('browser-sync', function() {
     ui: {
       port: 3003
     },
-    files: [dest + '/**/*'],
+    files: [path.join(dest, '**', '*')],
     port: 3002,
     proxy: 'http://localhost:3000',
     open: false

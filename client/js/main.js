@@ -1,10 +1,7 @@
 'use strict';
 
 import React from 'react';
-
-const HelloComponent = require('./components/HelloComponent');
-
-console.log('from browserify');
+import { HelloComponent } from './components/HelloComponent';
 
 React.render(
   <HelloComponent />, document.getElementById('app-container')

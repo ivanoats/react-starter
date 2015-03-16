@@ -1,4 +1,5 @@
 'use strict';
+/*eslint-disable key-spacing */
 
 module.exports = function(grunt) {
 

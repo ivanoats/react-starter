@@ -45,6 +45,10 @@
       }
     }],
     "key-spacing": [0, {"align": "value"}],
-    "no-underscore-dangle": 0
+    "no-underscore-dangle": 0,
+    "react/jsx-uses-vars":2,
+    "react/jsx-uses-react": 1,
+    "react/no-multi-comp": 1,
+    "react/react-in-jsx-scope": 1
   }
 }

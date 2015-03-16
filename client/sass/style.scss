@@ -1,4 +1,6 @@
+$open-sans: 'Encode Sans Compressed';
 @import "bourbon/bourbon";
+@include font-face('encode-sans-compressed', '/assets/fonts/encodesanscompressed');
 @import "base/base"; //Thoughtbot bitters with only a few customizations for UW
 @import "neat/neat";
 @import "refills/card";

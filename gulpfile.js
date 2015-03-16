@@ -223,7 +223,7 @@ gulp.task('build:prod-full', ['clean:dist'], function() {
 
 gulp.task('watch:prod', function() {
   gulp.watch([
-    path.join('app', '**', '*.{js,jsx}')
+    path.join('build', '**', '*.{js,jsx}')
   ], ['build:prod']);
 });
 

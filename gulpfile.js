@@ -7,6 +7,7 @@ var jscs        = require('gulp-jscs');
 var karma       = require('karma').server;
 var eslint      = require('gulp-eslint');
 var mocha       = require('gulp-mocha');
+var mochaSelenium = require('gulp-mocha-selenium');
 var nodemon     = require('gulp-nodemon');
 var connect     = require('gulp-connect');
 var shell       = require('gulp-shell');
@@ -280,6 +281,15 @@ gulp.task('test:karma', function(done) {
 gulp.task('test:server', function(done) {
   return gulp.src(path.join('test','server','**','*-spec.js'), {read: false})
   .pipe(mocha({reporter: 'nyan'}));
+});
+
+gulp.task('test:acceptance', ['server'], function(done) {
+  return gulp.src('test/acceptance/hello-spec.js', {read: false})
+    .pipe(mochaSelenium({
+      browserName: 'chrome',
+      reporter: 'nyan',
+      timeout: 5000
+    }));
 });
 
 // ----------------------------------------------------------------------------

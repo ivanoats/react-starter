@@ -4,7 +4,9 @@ var path        = require('path');
 var gulp        = require('gulp');
 var gutil       = require('gulp-util');
 var jscs        = require('gulp-jscs');
+var karma       = require('karma').server;
 var eslint      = require('gulp-eslint');
+var mocha       = require('gulp-mocha');
 var nodemon     = require('gulp-nodemon');
 var connect     = require('gulp-connect');
 var shell       = require('gulp-shell');
@@ -262,6 +264,22 @@ gulp.task('server:sources', function() {
     root: __dirname,
     port: 3001
   });
+});
+
+// ----------------------------------------------------------------------------
+// Tests
+// ----------------------------------------------------------------------------
+
+gulp.task('test:karma', function(done) {
+  karma.start({
+    configFile: path.join(__dirname,'karma.conf.js'),
+    singleRun: true
+  }, done);
+});
+
+gulp.task('test:server', function(done) {
+  return gulp.src(path.join('test','server','**','*-spec.js'), {read: false})
+  .pipe(mocha({reporter: 'nyan'}));
 });
 
 // ----------------------------------------------------------------------------

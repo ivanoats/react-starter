@@ -1,10 +1,10 @@
 $open-sans: 'Encode Sans Compressed';
-@import "bourbon/bourbon";
+@import 'bourbon/bourbon';
 @include font-face('encode-sans-compressed', '/assets/fonts/encodesanscompressed');
-@import "base/base"; //Thoughtbot bitters with only a few customizations for UW
-@import "neat/neat";
-@import "refills/card";
-@import "colors";
+@import 'base/base'; //Thoughtbot bitters with only a few customizations for UW
+@import 'neat/neat';
+@import 'refills/card';
+@import 'colors';
 
 section {
   @include outer-container;
@@ -26,8 +26,8 @@ $semi-bold: 600;
 // UW Styles based on Web Site Styleguide PDF from Foster Redesign 2015
 
 .social {
-  font-weight: lighter;
   font-size: 1.67rem;
+  font-weight: lighter;
 }
 
 .social-body {
@@ -44,5 +44,5 @@ $semi-bold: 600;
 
 .breadcrumbs {
   color: $cool-gray;
-  font-size: 0.75rem;
+  font-size: .75rem;
 }

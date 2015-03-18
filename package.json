@@ -39,6 +39,8 @@
     "blanket": "^1.1.6",
     "browser-sync": "^2.3.1",
     "chai": "^2.0.0",
+    "chai-as-promised": "^4.3.0",
+    "colors": "^1.0.3",
     "del": "^1.1.1",
     "eslint-plugin-react": "^1.4.1",
     "esprima-fb": "^12001.1.0-dev-harmony-fb",

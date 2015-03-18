@@ -273,29 +273,29 @@ gulp.task('server:sources', function() {
 
 gulp.task('test:karma', function(done) {
   karma.start({
-    configFile: path.join(__dirname,'karma.conf.js'),
+    configFile: path.join(__dirname, 'karma.conf.js'),
     singleRun: true
   }, done);
 });
 
 gulp.task('test:server', function(done) {
-  return gulp.src(path.join('test','server','**','*-spec.js'), {read: false})
-  .pipe(mocha({reporter: 'nyan'}));
+  return gulp.src(path.join('test', 'server', '**', '*-spec.js'), {read: false})
+  .pipe(mocha({reporter: 'nyan'}), done);
 });
 
 gulp.task('test:acceptance', ['server'], function(done) {
   return gulp.src('test/acceptance/hello-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'chrome',
-      reporter: 'nyan',
-      timeout: 5000
-    }));
+      reporter: 'nyan'
+     }), done);
 });
 
 // ----------------------------------------------------------------------------
 // Aggregations
 // ----------------------------------------------------------------------------
 gulp.task('serve', ['server']);
+gulp.task('test', ['test:server', 'test:karma', 'test:acceptance']);
 gulp.task('ls', ['build:ls', 'watch:ls', 'server:sources']);
 gulp.task('dev', ['build:dev', 'watch', 'server', 'server:sources']);
 gulp.task('hot', ['webpack-server']);

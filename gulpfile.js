@@ -287,7 +287,8 @@ gulp.task('test:acceptance', ['server'], function(done) {
   return gulp.src('test/acceptance/hello-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'chrome',
-      reporter: 'nyan'
+      reporter: 'nyan',
+      timeout: 7000
      }), done);
 });
 

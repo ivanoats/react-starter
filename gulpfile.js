@@ -288,6 +288,7 @@ gulp.task('test:acceptance', ['server'], function(done) {
     .pipe(mochaSelenium({
       browserName: 'chrome',
       reporter: 'nyan',
+      usePromises: true,
       timeout: 7000
      }), done);
 });

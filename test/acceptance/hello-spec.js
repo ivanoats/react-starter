@@ -32,7 +32,6 @@ describe('home page acceptance test', function() {
     var browser = this.browser;
     browser.get(URL)
       .then(function() {
-        console.log('here');
         return browser.elementByClassName('hello');
       }).then(function(val) {
         return val.text();

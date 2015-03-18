@@ -10,6 +10,7 @@ var chaiAsPromised = require('chai-as-promised');
 /*
    Chai as Promised is not compatible with PhantomJS!
    TODO polyfill for Function.prototype.bind for PhantomJS
+   TODO: investigate https://www.npmjs.com/package/chai-webdriver-promised (does not use wd)
  */
 chai.use(chaiAsPromised);
 var expect = chai.expect;
@@ -22,10 +23,8 @@ describe('home page acceptance test', function() {
     var browser = this.browser;
     browser.get(URL)
       .then(function() {
-      return browser.title();
-    }).then(function(val){
-      expect(val).to.equal('React Starter');
-    }).then(done, done);
+      expect(browser.title()).to.become('React Starter').and.notify(done);
+    });
   });
 
   it('has h1.hello with React Starter', function(done) {
@@ -34,9 +33,14 @@ describe('home page acceptance test', function() {
       .then(function() {
         return browser.elementByClassName('hello');
       }).then(function(val) {
-        return val.text();
-      }).then(function(val) {
-        expect(val).to.equal('Hello React!');
-      }).then(done, done);
+        expect(val.text()).to.become('Hello React!').and.notify(done);
+      });
+  });
+
+  after(function(done) {
+    var browser = this.browser;
+    browser.quit().then(function(){
+     done();
+   });
   });
 });

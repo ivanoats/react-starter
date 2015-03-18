@@ -283,7 +283,7 @@ gulp.task('test:server', function(done) {
   .pipe(mocha({reporter: 'nyan'}), done);
 });
 
-gulp.task('test:acceptance', ['server'], function(done) {
+gulp.task('test:acceptance', ['build:dev', 'server'], function(done) {
   return gulp.src('test/acceptance/hello-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'chrome',

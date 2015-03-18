@@ -4,13 +4,16 @@ This template includes:
   - A simple ExpressJS static server with Mocha Unit tests
   - ReactJS with JSX
   - Karma unit tests for React
-  - Browserify with Reactify (ES6) transform enabled
-  - Acceptance (End to End) tests with WebdriverIO (Selenium)
+  - Webpack with Babel Loader (enabling ES6 and beyond)
+  - Acceptance (End to End) tests with gulp-mocha-selenium (wd & Selenium)
 
 ## Prerequisites
 
   - A working Java system (JRE or JDK) for Selenium to run acceptance tests.
   if `java -version` works from your command line, you are good.
+  - Recommended: For working on Sass / SCSS files, a working Ruby environment.
+   `gem install bundler` if you haven't already.
+    Accepting Pull Requests to remove this Ruby dependency.
   - ESLint installed globally: `npm -g install eslint`
   - Other recommended global packages:
   ```

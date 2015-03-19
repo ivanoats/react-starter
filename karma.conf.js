@@ -1,8 +1,9 @@
 // Karma configuration
 // Generated on Tue Sep 09 2014 13:58:24 GMT-0700 (PDT)
-'use strict';
 
-var browsers = ['Chrome', 'PhantomJS'];
+var webpack = require('webpack');
+
+var browsers = ['Chrome'];
 if ( /^win/.test(process.platform) ) {
   browsers = ['IE'];
 }
@@ -16,21 +17,44 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['browserify', 'mocha'],
+    frameworks: ['mocha'],
 
-    browserify: {
-      debug:     true,
-      transform: ['6to5ify']
+    plugins: [
+      require('karma-webpack'),
+      require('karma-mocha'),
+      require('karma-chrome-launcher'),
+      require('karma-ie-launcher'),
+      require('karma-firefox-launcher'),
+      require('karma-phantomjs-launcher'),
+      require('karma-sourcemap-loader')
+    ],
+
+    webpack: {
+      // any necessary webpack configuration
+      devtool: 'inline-source-map',
+      module: {
+        loaders: [
+          { test: /\.js$/, loader: 'babel', exclude: /node_modules/ }
+        ]
+      }
+    },
+
+    webpackServer: {
+      noInfo: true // don't spam console when running karma
+    },
+
+    webpackMiddleware: {
+      stats: {
+        colors: true
+      }
     },
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/chai/chai.js',
-      'test/front-end/phantomjs-bind-polyfill.js',
-      'test/front-end/*-spec.js'
+//      'test/front-end/phantomjs-bind-polyfill.js',
+      'test/front-end/tests.webpack.js'
     ],
 
     // list of files to exclude
@@ -41,7 +65,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/**/*-spec.js': ['browserify']
+      'test/**/*.js': ['webpack', 'sourcemap']
     },
 
     // test results reporter to use
@@ -57,7 +81,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,

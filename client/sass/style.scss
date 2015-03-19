@@ -1,0 +1,48 @@
+$open-sans: 'Encode Sans Compressed';
+@import 'bourbon/bourbon';
+@include font-face('encode-sans-compressed', '/assets/fonts/encodesanscompressed');
+@import 'base/base'; //Thoughtbot bitters with only a few customizations for UW
+@import 'neat/neat';
+@import 'refills/card';
+@import 'colors';
+
+section {
+  @include outer-container;
+  aside { @include span-columns(3); }
+  article { @include span-columns(9); }
+}
+
+h1 {
+  color: $dark-purple;
+  font-weight: lighter;
+}
+
+body {
+  color: $cool-gray;
+}
+
+$semi-bold: 600;
+
+// UW Styles based on Web Site Styleguide PDF from Foster Redesign 2015
+
+.social {
+  font-size: 1.67rem;
+  font-weight: lighter;
+}
+
+.social-body {
+  font-weight: $semi-bold;
+}
+
+.menu-1 {
+  font-size: 1.25rem;
+}
+
+.menu-2 {
+  font-size: 1.2rem;
+}
+
+.breadcrumbs {
+  color: $cool-gray;
+  font-size: .75rem;
+}

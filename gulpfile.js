@@ -84,6 +84,7 @@ gulp.task('eslint-backend', function() {
   return gulp
     .src(BACKEND_FILES)
     .pipe(eslint({
+      configGile: './.eslintrc',
       envs: [
         'node'
       ]
@@ -292,7 +293,7 @@ gulp.task('test:acceptance', ['build:dev', 'server'], function() {
       reporter: 'nyan',
       usePromises: true,
       timeout: 7000
-     }).once('end', function() {
+    }).once('end', function() {
       /* eslint-disable no-process-exit */
       process.exit();
       /* eslint-enable no-process-exit */

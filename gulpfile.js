@@ -233,7 +233,7 @@ gulp.task('watch:prod', function() {
 // ----------------------------------------------------------------------------
 // Servers
 // ----------------------------------------------------------------------------
-// Dev. server
+// Dev. server with watch
 var called = false;
 gulp.task('server', function(cb) {
   return nodemon({
@@ -283,14 +283,20 @@ gulp.task('test:server', function(done) {
   .pipe(mocha({reporter: 'nyan'}), done);
 });
 
-gulp.task('test:acceptance', ['build:dev', 'server'], function(done) {
-  return gulp.src('test/acceptance/hello-spec.js', {read: false})
+gulp.task('test:acceptance', ['build:dev', 'server'], function() {
+  // specs may need to start and stop the express server in before/after blocks,
+  // if it is put in as a gulp task the process hangs, unless process.exit below
+  return gulp.src('test/acceptance/*-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'chrome',
       reporter: 'nyan',
       usePromises: true,
       timeout: 7000
-     }), done);
+     }).once('end', function() {
+      /* eslint-disable no-process-exit */
+      process.exit();
+      /* eslint-enable no-process-exit */
+    }));
 });
 
 // ----------------------------------------------------------------------------

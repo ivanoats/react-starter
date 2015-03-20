@@ -8,7 +8,7 @@ if ( /^win/.test(process.platform) ) {
   browsers = ['IE'];
 }
 if (process.env.TRAVIS ) {
-  browsers = ['PhantomJS'];
+  browsers = ['Firefox'];
 }
 
 module.exports = function(config) {

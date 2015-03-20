@@ -10,6 +10,6 @@ before_script:
 script:
   - "gulp check"
   - "gulp test:server"
-  - "gulp test:acceptance"
+  - "xvfb-run gulp test:acceptance"
 addons:
   firefox: "31"

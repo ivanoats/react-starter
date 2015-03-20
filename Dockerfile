@@ -10,10 +10,10 @@ FROM dockerfile/python
 # Install Node.js
 RUN \
   cd /tmp && \
-  wget http://nodejs.org/dist/v0.10.37/node-v0.10.37.tar.gz \
+  wget http://nodejs.org/dist/v0.10.37/node-v0.10.37.tar.gz && \
   tar xvzf node-v0.10.37.tar.gz && \
   rm -f node-v0.10.37.tar.gz && \
-  cd node-v* && \
+  cd node-v0.10.37 && \
   ./configure && \
   CXX="g++ -Wno-unused-local-typedefs" make && \
   CXX="g++ -Wno-unused-local-typedefs" make install && \

@@ -26,5 +26,14 @@ RUN \
 # Define working directory.
 WORKDIR /data
 
+COPY . /data
+
+RUN \
+  cd /data && \
+  rm -rf node_modules && \
+  export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=true && \
+  npm install && \
+  gulp build
+
 # Define default command.
 CMD ["bash"]

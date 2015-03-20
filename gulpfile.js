@@ -292,7 +292,7 @@ gulp.task('test:acceptance', ['build:dev', 'server'], function() {
       browserName: 'chrome',
       reporter: 'nyan',
       usePromises: true,
-      timeout: 7000
+      timeout: 30000
     }).once('end', function() {
       /* eslint-disable no-process-exit */
       process.exit();

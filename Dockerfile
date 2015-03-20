@@ -21,7 +21,7 @@ RUN \
   rm -rf /tmp/node-v* && \
   npm install -g npm && \
   printf '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc && \
-  npm -g install gulp eslint eslint-react-plugin webpack jscs mocha nodemon
+  npm -g install gulp eslint eslint-plugin-react webpack jscs mocha nodemon
 
 # Define working directory.
 WORKDIR /data

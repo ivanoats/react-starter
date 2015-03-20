@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - "0.10.37"
 before_install:
-  - "exportDISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfbstart"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
   - "npm install -g eslint webpack eslint-plugin-react"
 script:
   - "gulp check"

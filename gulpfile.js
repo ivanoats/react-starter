@@ -289,7 +289,7 @@ gulp.task('test:acceptance', ['build:dev', 'server'], function() {
   // if it is put in as a gulp task the process hangs, unless process.exit below
   return gulp.src('test/acceptance/*-spec.js', {read: false})
     .pipe(mochaSelenium({
-      browserName: 'chrome',
+      browserName: 'firefox',
       reporter: 'dot',
       usePromises: true,
       timeout: 30000

@@ -281,7 +281,7 @@ gulp.task('test:karma', function(done) {
 
 gulp.task('test:server', function(done) {
   return gulp.src(path.join('test', 'server', '**', '*-spec.js'), {read: false})
-  .pipe(mocha({reporter: 'nyan'}), done);
+  .pipe(mocha({reporter: 'dot'}), done);
 });
 
 gulp.task('test:acceptance', ['build:dev', 'server'], function() {
@@ -290,7 +290,7 @@ gulp.task('test:acceptance', ['build:dev', 'server'], function() {
   return gulp.src('test/acceptance/*-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'chrome',
-      reporter: 'nyan',
+      reporter: 'dot',
       usePromises: true,
       timeout: 30000
     }).once('end', function() {

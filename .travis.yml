@@ -8,8 +8,6 @@ before_install:
 before_script:
   - "sleep 10"
 script:
-  - "gulp check"
-  - "gulp test:server"
-  - "gulp test:acceptance"
+  - "DEBUG=* gulp test:acceptance"
 addons:
   firefox: "36.0"

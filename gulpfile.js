@@ -290,14 +290,21 @@ gulp.task('test:acceptance', ['build:dev', 'server'], function() {
   return gulp.src('test/acceptance/*-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'firefox',
+      host: 'localhost',
+      port: '4444',
+      //useSystemPhantom: true,
+      bail: true,
       reporter: 'dot',
       usePromises: true,
-      timeout: 30000
-    }).once('end', function() {
+      timeout: 15000
+    })
+    .once('end', function() {
       /* eslint-disable no-process-exit */
       process.exit();
       /* eslint-enable no-process-exit */
-    }));
+    })
+
+    );
 });
 
 // ----------------------------------------------------------------------------

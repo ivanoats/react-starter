@@ -68,6 +68,7 @@
     "mocha": "^2.1.0",
     "node-bourbon": "^4.2.1-beta1",
     "node-sass": "^3.0.0-alpha.0",
+    "phantomjs": "^1.9.16",
     "react-hot-loader": "^1.2.3",
     "supertest": "^0.15.0",
     "vinyl-paths": "^1.0.0",

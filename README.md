@@ -1,16 +1,27 @@
 # React Starter Template
 
-This template includes:
-  - A simple ExpressJS static server with Mocha Unit tests
-  - ReactJS with JSX
-  - Karma unit tests for React
-  - Webpack with Babel Loader (enabling ES6 and beyond)
+[![Build Status](https://api.shippable.com/projects/55078e185ab6cc13529dea4d/badge?branchName=master)](https://app.shippable.com/projects/55078e185ab6cc13529dea4d/builds/latest)
+[![Build Status](https://travis-ci.org/UWFosterIT/react-starter.svg?branch=master)](https://travis-ci.org/UWFosterIT/react-starter)
+[![Code Climate](https://codeclimate.com/github/UWFosterIT/react-starter/badges/gpa.svg)](https://codeclimate.com/github/UWFosterIT/react-starter)
+[![Test Coverage](https://codeclimate.com/github/UWFosterIT/react-starter/badges/coverage.svg)](https://codeclimate.com/github/UWFosterIT/react-starter)
+[![Dependency Status](https://david-dm.org/UWFosterIT/react-starter.svg)](https://david-dm.org/UWFosterIT/react-starter)
+[![devDependency Status](https://david-dm.org/UWFosterIT/react-starter/dev-status.svg)](https://david-dm.org/UWFosterIT/react-starter#info=devDependencies)
+
+This clone-able web site starter template includes:
+  - A simple [ExpressJS](http://expressjs.com) static server with Mocha Unit tests. Build out your
+  RESTful routes here.
+  - [ReactJS with JSX](http://facebook.github.io/react/)
+  - [Karma](http://karma-runner.github.io/0.12/index.html) unit tests for React
+  - [Webpack](http://webpack.github.io) with [Babel](https://babeljs.io) Loader
+   (enabling ES6 and beyond)
   - Acceptance (End to End) tests with gulp-mocha-selenium (wd & Selenium)
 
 ## Prerequisites
 
   - A working Java system (JRE or JDK) for Selenium to run acceptance tests.
   if `java -version` works from your command line, you are good.
+  - Download and start selenium server for acceptance tests. see before_script
+    section in the [.travis.yml](.travis.yml)
   - Recommended: For working on Sass / SCSS files, a working Ruby environment.
    `gem install bundler` if you haven't already.
     Accepting Pull Requests to remove this Ruby dependency.
@@ -27,7 +38,7 @@ Clone this repo, then:
 `npm install`
 
 Optionally, for upgrading bourbon and neat, you might need a working Ruby
-environment.  
+environment.
 
 `bundle install` will install the Sass gems needed (Sass, Bourbon, Neat)
 
@@ -37,6 +48,10 @@ I am working on not requiring Ruby at all, and using node-bourbon instead.
 ## Tests
 
 `gulp test`
+
+*Reminder*: Download and start selenium server for acceptance tests. See the
+before_script section in the [.travis.yml](.travis.yml) and do this on your
+local machine
 
 ## Run
 

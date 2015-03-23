@@ -96,3 +96,6 @@ app/js/jspm_packages
 
 # Ctags
 tags
+
+# Environment Variables
+.env

@@ -1,13 +1,18 @@
 language: node_js
 node_js:
-  - "0.10.37"
+- 0.10.37
 before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - "npm install -g eslint gulp eslint-plugin-react webpack"
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- npm install -g eslint gulp eslint-plugin-react webpack
 before_script:
-  - "sleep 10"
+- sleep 10
 script:
-  - "DEBUG=* gulp test:acceptance"
+- gulp test:acceptance
 addons:
-  firefox: "36.0"
+  firefox: '36.0'
+  sauce_connect: true
+env:
+  global:
+  - secure: JlTatfwAiE4OAVN8rZPK/NmLGWoCZTCFylaEiXUujMjKiWl3JU/uXu73kqfSI1IZlf4dzZzFZGV6sUQ8MEbmtXhEZhGSiJJSXST8y8DH3xSHKvvxvpn/jcJQJ32XaLNLP5L0uOChsrnZ7iiiJVkgAc7P0zlsIiRC27uLH9UA8cM=
+  - secure: KIyO2fijQ2wiW0S0xowvomh4IgkLTTGzmvthYs6jhVproBPOXLr9Cf0Pnq8TJqkTnMONiblWPOPMa5pJFMt3C4URQ149SeTi/a2tVXF7Wkn81xT6fFm+o6PfjjkEZmjOC8pmyntjMBGP7NgBOimG5/E3XzqnthgQuIQo+8fS6bw=

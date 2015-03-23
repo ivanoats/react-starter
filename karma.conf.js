@@ -2,6 +2,7 @@
 // Generated on Tue Sep 09 2014 13:58:24 GMT-0700 (PDT)
 
 var webpack = require('webpack');
+var webpackConfig = require('./webpack.config.js');
 
 var browsers = ['Chrome'];
 if ( /^win/.test(process.platform) ) {
@@ -30,7 +31,7 @@ module.exports = function(config) {
       require('karma-phantomjs-launcher'),
       require('karma-sourcemap-loader')
     ],
-
+/*
     webpack: {
       // any necessary webpack configuration
       devtool: 'inline-source-map',
@@ -40,6 +41,8 @@ module.exports = function(config) {
         ]
       }
     },
+*/
+    webpack: webpackConfig,
 
     webpackServer: {
       noInfo: true // don't spam console when running karma
@@ -54,7 +57,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
 //      'test/front-end/phantomjs-bind-polyfill.js',
-      'test/front-end/tests-webpack.js'
+      'test/front-end/*-spec.js'
     ],
 
     // list of files to exclude
@@ -65,7 +68,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/**/*.js': ['webpack', 'sourcemap']
+      'test/front-end/*.js': ['webpack', 'sourcemap']
     },
 
     // test results reporter to use

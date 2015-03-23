@@ -13,7 +13,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel?experimental' },
+      { test: /\.js$/, loader: 'babel?experimental', exclude: /node_modules/ },
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style!css?importLoaders=1') },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style!css!sass?outputStyle=expanded') }
     ]

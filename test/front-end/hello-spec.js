@@ -1,6 +1,14 @@
-const expect = require('chai').expect;
+import { HelloComponent } from '../../client/js/components/HelloComponent';
+import React from 'react/addons';
+import { expect } from 'chai';
 
 describe('HelloComponent', function() {
+
+  /*
+  beforeEach(function () {
+
+  });
+  */
 
   it('runs a test function', function() {
     var ok = 1;
@@ -11,17 +19,13 @@ describe('HelloComponent', function() {
   });
 
   it('says hello in a class of hello', function() {
-    const React = require('react');
-    const ReactAddons = require('react/addons');
     const TestUtils = React.addons.TestUtils;
-    const HelloComponent = require( '../../client/js/components/HelloComponent.js');
-
-    var hello = TestUtils.renderIntoDocument(
+    const hello = TestUtils.renderIntoDocument(
       <HelloComponent message='Hello World' />
     );
 
-    var helloFound = TestUtils.findRenderedDOMComponentWithClass(hello, 'hello');
+    const helloFound = TestUtils.findRenderedDOMComponentWithClass(hello, 'hello');
 
-    expect(helloFound.getDOMNode().textContent).to.equal('Hello World');
+    expect(React.findDOMNode(helloFound).textContent).to.equal('Hello World');
   });
 });

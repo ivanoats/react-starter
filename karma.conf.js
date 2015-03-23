@@ -54,7 +54,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
 //      'test/front-end/phantomjs-bind-polyfill.js',
-      'test/front-end/tests.webpack.js'
+      'test/front-end/tests-webpack.js'
     ],
 
     // list of files to exclude

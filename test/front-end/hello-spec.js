@@ -1,4 +1,4 @@
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 
 describe('HelloComponent', function() {
 
@@ -11,9 +11,10 @@ describe('HelloComponent', function() {
   });
 
   it('says hello in a class of hello', function() {
-    var React = require('react/addons');
-    var HelloComponent = require( '../../client/js/components/HelloComponent.js');
-    var TestUtils = React.addons.TestUtils;
+    const React = require('react');
+    const ReactAddons = require('react/addons');
+    const TestUtils = React.addons.TestUtils;
+    const HelloComponent = require( '../../client/js/components/HelloComponent.js');
 
     var hello = TestUtils.renderIntoDocument(
       <HelloComponent message='Hello World' />

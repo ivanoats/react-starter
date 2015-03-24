@@ -12,7 +12,7 @@ before_script:
 script:
 - gulp build:dev
 - sleep 10
-- gulp test:sever
+- gulp test:server
 - gulp test:karma
 - gulp test:acceptance
 addons:

@@ -280,13 +280,15 @@ gulp.task('test:karma', function(done) {
 });
 
 gulp.task('test:server', function(done) {
+  // set port != 3000 in order to not conflict with karma and selenium
+  process.env.PORT = process.env.PORT || 3010;
   return gulp.src(path.join('test', 'server', '**', '*-spec.js'), {read: false})
   .pipe(mocha({reporter: 'dot'}), done);
 });
 
-gulp.task('test:acceptance', function() {
-  // specs may need to start and stop the express server in before/after blocks,
-  // if it is put in as a gulp task the process hangs, unless process.exit below
+gulp.task('test:acceptance', function(done) {
+  process.env.PORT = 3011;
+  const app = require('./server');
   return gulp.src('test/acceptance/*-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'firefox',
@@ -301,21 +303,14 @@ gulp.task('test:acceptance', function() {
       reporter: 'dot',
       usePromises: true,
       timeout: 15000
-    })
-    .once('end', function() {
-      /* eslint-disable no-process-exit */
-      process.exit();
-      /* eslint-enable no-process-exit */
-    })
-
-    );
+    }), done);
 });
 
 // ----------------------------------------------------------------------------
 // Aggregations
 // ----------------------------------------------------------------------------
 gulp.task('serve', ['server']);
-gulp.task('test', ['build:dev', 'server', 'test:server', 'test:karma', 'test:acceptance']);
+gulp.task('test', ['build:dev', 'test:server', 'test:karma', 'test:acceptance']);
 gulp.task('ls', ['build:ls', 'watch:ls', 'server:sources']);
 gulp.task('dev', ['build:dev', 'watch', 'server', 'server:sources']);
 gulp.task('hot', ['webpack-server']);

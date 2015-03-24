@@ -1,15 +1,19 @@
 {
   "name": "react-starter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Starter app for React apps",
   "main": "server.js",
   "scripts": {
+    "start": "node server",
     "test": "gulp test",
     "postinstall": "./node_modules/.bin/gulp build"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/UWFosterIT/react-starter"
+  },
+  "engines": {
+    "node": "0.10.x"
   },
   "keywords": [
     "scholarships",

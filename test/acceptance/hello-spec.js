@@ -44,6 +44,6 @@ describe('home page acceptance test', function() {
     browser.quit().then(function(){
       app.server.close();
       done();
-   });
+    });
   });
 });

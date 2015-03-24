@@ -308,7 +308,7 @@ gulp.task('test:acceptance', function(done) {
 // Aggregations
 // ----------------------------------------------------------------------------
 gulp.task('serve', ['server']);
-gulp.task('test', ['build:dev', 'test:server', 'test:karma', 'test:acceptance']);
+gulp.task('test', ['test:server', 'test:karma', 'test:acceptance']);
 gulp.task('ls', ['build:ls', 'watch:ls', 'server:sources']);
 gulp.task('dev', ['build:dev', 'watch', 'server', 'server:sources']);
 gulp.task('hot', ['webpack-server']);

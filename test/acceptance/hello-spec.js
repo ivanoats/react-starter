@@ -14,7 +14,9 @@ var chaiAsPromised = require('chai-as-promised');
  */
 chai.use(chaiAsPromised);
 var expect = chai.expect;
-var port = process.env.PORT || 3000;
+var port = 3011;
+process.env.PORT = port;
+var app = require('../../server');
 var URL = 'http://localhost:' + port;
 
 describe('home page acceptance test', function() {
@@ -40,7 +42,8 @@ describe('home page acceptance test', function() {
   after(function(done) {
     var browser = this.browser;
     browser.quit().then(function(){
-     done();
+      app.server.close();
+      done();
    });
   });
 });

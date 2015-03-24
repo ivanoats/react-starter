@@ -287,8 +287,6 @@ gulp.task('test:server', function(done) {
 });
 
 gulp.task('test:acceptance', function(done) {
-  process.env.PORT = 3011;
-  const app = require('./server');
   return gulp.src('test/acceptance/*-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'firefox',

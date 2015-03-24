@@ -301,7 +301,13 @@ gulp.task('test:acceptance', function(done) {
       reporter: 'dot',
       usePromises: true,
       timeout: 15000
-    }), done);
+    })
+    .once('end', function() {
+    /* eslint-disable no-process-exit */
+      process.exit();
+    /* eslint-enable no-process-exit */}
+    ), done);
+
 });
 
 // ----------------------------------------------------------------------------

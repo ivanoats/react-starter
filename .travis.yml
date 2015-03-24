@@ -12,7 +12,9 @@ before_script:
 script:
 - gulp build:dev
 - sleep 10
-- gulp test
+- gulp test:sever
+- gulp test:karma
+- gulp test:acceptance
 addons:
   firefox: '36.0'
   sauce_connect: true

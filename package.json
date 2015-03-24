@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "gulp test",
-    "postinstall": "./node_modules/gulp build"
+    "postinstall": "./node_modules/.bin/gulp build"
   },
   "repository": {
     "type": "git",

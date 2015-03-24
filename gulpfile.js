@@ -281,7 +281,7 @@ gulp.task('test:karma', function(done) {
 
 gulp.task('test:server', function(done) {
   // set port != 3000 in order to not conflict with karma and selenium
-  process.env.PORT = process.env.PORT || 3010;
+  process.env.PORT = 3010;
   return gulp.src(path.join('test', 'server', '**', '*-spec.js'), {read: false})
   .pipe(mocha({reporter: 'dot'}), done);
 });

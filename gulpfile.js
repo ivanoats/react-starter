@@ -221,7 +221,7 @@ gulp.task('build:prod', function(done) {
   });
 });
 
-gulp.task('build:prod-full', ['clean:dist'], function() {
+gulp.task('build:prod-full', ['clean'], function() {
   return gulp.run('build:prod');
 });
 

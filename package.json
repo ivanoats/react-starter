@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "test": "gulp test",
-    "postinstall": "./node_modules/.bin/gulp build"
+    "postinstall": "./node_modules/.bin/gulp build:dev"
   },
   "repository": {
     "type": "git",

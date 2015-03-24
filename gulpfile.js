@@ -284,7 +284,7 @@ gulp.task('test:server', function(done) {
   .pipe(mocha({reporter: 'dot'}), done);
 });
 
-gulp.task('test:acceptance', ['build:dev', 'server'], function() {
+gulp.task('test:acceptance', function() {
   // specs may need to start and stop the express server in before/after blocks,
   // if it is put in as a gulp task the process hangs, unless process.exit below
   return gulp.src('test/acceptance/*-spec.js', {read: false})
@@ -315,7 +315,7 @@ gulp.task('test:acceptance', ['build:dev', 'server'], function() {
 // Aggregations
 // ----------------------------------------------------------------------------
 gulp.task('serve', ['server']);
-gulp.task('test', ['test:server', 'test:karma', 'test:acceptance']);
+gulp.task('test', ['build:dev', 'server', 'test:server', 'test:karma', 'test:acceptance']);
 gulp.task('ls', ['build:ls', 'watch:ls', 'server:sources']);
 gulp.task('dev', ['build:dev', 'watch', 'server', 'server:sources']);
 gulp.task('hot', ['webpack-server']);

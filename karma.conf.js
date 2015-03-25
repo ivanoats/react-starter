@@ -2,7 +2,10 @@
 // Generated on Tue Sep 09 2014 13:58:24 GMT-0700 (PDT)
 
 var webpack = require('webpack');
-var webpackConfig = require('./webpack.config.js');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+// TODO merge main webpack config with karma's (see below)
+// var webpackConfig = require('./webpack.config.js');
 
 var browsers = ['Chrome'];
 if ( /^win/.test(process.platform) ) {
@@ -37,11 +40,28 @@ module.exports = function(config) {
       devtool: 'inline-source-map',
       module: {
         loaders: [
-          { test: /\.js$/, loader: 'babel', exclude: /node_modules/ }
+          { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+          { test: /\.css$/, loader: ExtractTextPlugin.extract('style!css?importLoaders=1') },
+          { test: /\.scss$/, loader: ExtractTextPlugin.extract('style!css!sass?outputStyle=expanded') }
         ]
+      },
+      plugins: [
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new ExtractTextPlugin('style.css'),
+        new webpack.DefinePlugin({
+          'process.env': {
+            // Signal production mode for React JS libs.
+            NODE_ENV: JSON.stringify('test')
+          }
+        })
+      ],
+      resolve: {
+        extensions: ['', '.js', '.jsx']
       }
     },
 
+  // TODO merge karma.conf's webpack config and main app webpack config?
   //  webpack: webpackConfig,
 
     webpackServer: {

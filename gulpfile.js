@@ -290,6 +290,12 @@ gulp.task('test:acceptance', function(done) {
   return gulp.src('test/acceptance/*-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'firefox',
+      // make sure to launch Selenium server in another terminal window first
+      // `brew install selenium-server`
+      // `npm -g install selenium-server`
+      // or get the jar file:
+      // `wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar`
+      // `java -jar selenium-server-standalone-2.45.0.jar > /dev/null &`
       host: 'localhost',
       port: '4444',
       // host: 'ondemand.saucelabs.com',

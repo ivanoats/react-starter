@@ -1,5 +1,5 @@
-import { HelloComponent } from '../../client/js/components/HelloComponent';
 import React from 'react/addons';
+import { HelloComponent } from '../../client/js/components/HelloComponent';
 import { expect } from 'chai';
 
 describe('HelloComponent', function() {
@@ -11,7 +11,8 @@ describe('HelloComponent', function() {
   */
 
   it('runs a test function', function() {
-    var ok = 1;
+    var ok = 'test is ok';
+    console.log(ok); //keep console.log here to use variable
   });
 
   it('passes a quite simple test', function() {
@@ -19,12 +20,13 @@ describe('HelloComponent', function() {
   });
 
   it('says hello in a class of hello', function() {
-    const TestUtils = React.addons.TestUtils;
-    const hello = TestUtils.renderIntoDocument(
+    var TestUtils = React.addons.TestUtils;
+    console.log('log Object.keys(React.addons)', Object.keys(React.addons));
+    var hello = TestUtils.renderIntoDocument(
       <HelloComponent message='Hello World' />
     );
 
-    const helloFound = TestUtils.findRenderedDOMComponentWithClass(hello, 'hello');
+    var helloFound = TestUtils.findRenderedDOMComponentWithClass(hello, 'hello');
 
     expect(React.findDOMNode(helloFound).textContent).to.equal('Hello World');
   });

@@ -31,7 +31,7 @@ module.exports = function(config) {
       require('karma-phantomjs-launcher'),
       require('karma-sourcemap-loader')
     ],
-/*
+
     webpack: {
       // any necessary webpack configuration
       devtool: 'inline-source-map',
@@ -41,8 +41,8 @@ module.exports = function(config) {
         ]
       }
     },
-*/
-    webpack: webpackConfig,
+
+  //  webpack: webpackConfig,
 
     webpackServer: {
       noInfo: true // don't spam console when running karma

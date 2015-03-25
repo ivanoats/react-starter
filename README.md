@@ -3,6 +3,7 @@
 [![Build Status](https://api.shippable.com/projects/55078e185ab6cc13529dea4d/badge?branchName=master)](https://app.shippable.com/projects/55078e185ab6cc13529dea4d/builds/latest)
 [![Build Status](https://travis-ci.org/UWFosterIT/react-starter.svg?branch=master)](https://travis-ci.org/UWFosterIT/react-starter)
 [![Code Climate](https://codeclimate.com/github/UWFosterIT/react-starter/badges/gpa.svg)](https://codeclimate.com/github/UWFosterIT/react-starter)
+[![bitHound Score](https://www.bithound.io/github/UWFosterIT/react-starter/badges/score.svg)](https://www.bithound.io/github/UWFosterIT/react-starter)
 [![Test Coverage](https://codeclimate.com/github/UWFosterIT/react-starter/badges/coverage.svg)](https://codeclimate.com/github/UWFosterIT/react-starter)
 [![Dependency Status](https://david-dm.org/UWFosterIT/react-starter.svg)](https://david-dm.org/UWFosterIT/react-starter)
 [![devDependency Status](https://david-dm.org/UWFosterIT/react-starter/dev-status.svg)](https://david-dm.org/UWFosterIT/react-starter#info=devDependencies)

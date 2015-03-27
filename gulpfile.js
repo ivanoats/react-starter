@@ -59,8 +59,8 @@ var _jsonCfg = function(name) {
   return JSON.parse(raw.replace(/\/\/.*\n/g, ''));
 };
 
-var logReload = function() {
-  console.log('reloading!');
+var logReload = function(msg) {
+  console.log('[BS] reloading:', msg);
   reload({stream: true});
 };
 
@@ -188,9 +188,12 @@ gulp.task('build:dev', ['copy', 'sass', 'webpack']);
 gulp.task('watch', function() {
   gulp.watch([
     path.join(src, 'js', '**', '*.{js,jsx}'),
-    path.join(src, 'sass', '**', '*.scss'),
     path.join(src, 'index.html')
   ], ['webpack']).on('change', logReload);
+
+  gulp.watch([
+    path.join(src, 'sass', '**', '*.scss')
+  ], ['sass']).on('change', logReload);
 });
 
 gulp.task('browser-sync', function() {
@@ -296,6 +299,7 @@ gulp.task('test:acceptance', function(done) {
       // make sure to launch Selenium server in another terminal window first
       // `brew install selenium-server`
       // `npm -g install selenium-server`
+      // `selenium-server start`
       // or get the jar file:
       // `wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar`
       // `java -jar selenium-server-standalone-2.45.0.jar > /dev/null &`

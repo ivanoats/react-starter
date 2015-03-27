@@ -1,22 +1,22 @@
 // Gulpfile
-var fs          = require('fs');
-var path        = require('path');
-var gulp        = require('gulp');
-var gutil       = require('gulp-util');
-var jscs        = require('gulp-jscs');
-var karma       = require('karma').server;
-var eslint      = require('gulp-eslint');
-var mocha       = require('gulp-mocha');
+var fs            = require('fs');
+var path          = require('path');
+var gulp          = require('gulp');
+var gutil         = require('gulp-util');
+var jscs          = require('gulp-jscs');
+var karma         = require('karma').server;
+var eslint        = require('gulp-eslint');
+var mocha         = require('gulp-mocha');
 var mochaSelenium = require('gulp-mocha-selenium');
-var nodemon     = require('gulp-nodemon');
-var connect     = require('gulp-connect');
-var shell       = require('gulp-shell');
-var sass        = require('gulp-sass');
-var webpack     = require('webpack');
-var del         = require('del');
-var vinylPaths  = require('vinyl-paths');
-var browserSync = require('browser-sync');
-var reload      = browserSync.reload;
+var nodemon       = require('gulp-nodemon');
+var connect       = require('gulp-connect');
+var shell         = require('gulp-shell');
+var sass          = require('gulp-sass');
+var webpack       = require('webpack');
+var del           = require('del');
+var vinylPaths    = require('vinyl-paths');
+var browserSync   = require('browser-sync');
+var reload        = browserSync.reload;
 
 // Webpack configs
 var buildCfg    = require('./webpack.config');
@@ -41,7 +41,7 @@ var ASSETS = [
   src + 'assets/**/*'
 ];
 
-var CSS = [
+var STYLE_CSS = [
   src + 'css/**/*.css'
 ];
 
@@ -84,7 +84,7 @@ gulp.task('eslint-backend', function() {
   return gulp
     .src(BACKEND_FILES)
     .pipe(eslint({
-      configGile: './.eslintrc',
+      configFile: './.eslintrc',
       envs: [
         'node'
       ]
@@ -110,14 +110,10 @@ gulp.task('jscs', function() {
 // ----------------------------------------------------------------------------
 // Check Code Quality
 // ----------------------------------------------------------------------------
-/* uncomment when eslint works
+
 gulp.task('check', ['jscs', 'eslint']);
 gulp.task('check:ci', ['jscs', 'eslint']);
 gulp.task('check:all', ['jscs', 'eslint']);
-*/
-gulp.task('check', ['jscs']);
-gulp.task('check:ci', ['jscs']);
-gulp.task('check:all', ['jscs']);
 
 // ----------------------------------------------------------------------------
 // Cleaning
@@ -146,7 +142,7 @@ gulp.task('copy:assets', function() {
 
 // copy plain css
 gulp.task('copy:css', function() {
-  gulp.src(CSS)
+  gulp.src(STYLE_CSS)
     .pipe(gulp.dest(path.join(dest, 'css')));
 });
 
@@ -172,11 +168,15 @@ gulp.task('webpack', function(done) {
   webpack(buildDevCfg).run(function(err, stats) {
     if (err) { throw new gutil.PluginError('webpack', err); }
 
+    gutil.log('[webpack]', 'bundling');
+
+    /* useful for debugging webpack
     gutil.log('[webpack]', stats.toString({
       hash: true,
       colors: true,
       cached: false
     }));
+    */
 
     done();
   });
@@ -185,10 +185,11 @@ gulp.task('webpack', function(done) {
 // copy static and then build js
 gulp.task('build:dev', ['copy', 'sass', 'webpack']);
 
-gulp.task('watch', ['build:dev', 'browser-sync'], function() {
+gulp.task('watch', function() {
   gulp.watch([
     path.join(src, 'js', '**', '*.{js,jsx}'),
-    path.join(src, 'sass', '**', '*.scss')
+    path.join(src, 'sass', '**', '*.scss'),
+    path.join(src, 'index.html')
   ], ['webpack']).on('change', logReload);
 });
 
@@ -234,7 +235,7 @@ gulp.task('watch:prod', function() {
 // ----------------------------------------------------------------------------
 // Servers
 // ----------------------------------------------------------------------------
-// Dev. server with watch
+// Dev. server
 var called = false;
 gulp.task('server', function(cb) {
   return nodemon({
@@ -242,11 +243,12 @@ gulp.task('server', function(cb) {
     ext: 'js,jsx',
     watch: [
       'server',
-      src
+      path.join(src, 'index.html')
     ]
   })
   .on('start', function onStart() {
     if (!called) { cb(); }
+
     called = true;
   })
   .on('restart', function onRestart() {
@@ -283,13 +285,14 @@ gulp.task('test:server', function(done) {
   // set port != 3000 in order to not conflict with karma and selenium
   process.env.PORT = 3010;
   return gulp.src(path.join('test', 'server', '**', '*-spec.js'), {read: false})
-  .pipe(mocha({reporter: 'dot'}), done);
+    .pipe(mocha({reporter: 'dot'}), done);
 });
 
 gulp.task('test:acceptance', function(done) {
   return gulp.src('test/acceptance/*-spec.js', {read: false})
     .pipe(mochaSelenium({
       browserName: 'firefox',
+
       // make sure to launch Selenium server in another terminal window first
       // `brew install selenium-server`
       // `npm -g install selenium-server`
@@ -298,6 +301,8 @@ gulp.task('test:acceptance', function(done) {
       // `java -jar selenium-server-standalone-2.45.0.jar > /dev/null &`
       host: 'localhost',
       port: '4444',
+
+      // Config for using Sauce Labs
       // host: 'ondemand.saucelabs.com',
       // port: '80',
       // username: process.env.SAUCE_USERNAME,
@@ -308,10 +313,13 @@ gulp.task('test:acceptance', function(done) {
       usePromises: true,
       timeout: 15000
     })
-    .once('end', function() {
-    /* eslint-disable no-process-exit */
-      process.exit();
-    /* eslint-enable no-process-exit */}
+      .once('end', function() {
+        /* eslint-disable no-process-exit */
+        process.exit();
+
+        /* eslint-enable no-process-exit */
+      }
+
     ), done);
 
 });
@@ -322,7 +330,7 @@ gulp.task('test:acceptance', function(done) {
 gulp.task('serve', ['server']);
 gulp.task('test', ['test:server', 'test:karma', 'test:acceptance']);
 gulp.task('ls', ['build:ls', 'watch:ls', 'server:sources']);
-gulp.task('dev', ['build:dev', 'watch', 'server', 'server:sources']);
+gulp.task('dev', ['build:dev', 'watch', 'server', 'server:sources', 'browser-sync']);
 gulp.task('hot', ['webpack-server']);
 gulp.task('prod', ['build:prod', 'watch:prod', 'server', 'server:sources']);
 gulp.task('build', ['build:prod-full']);

@@ -21,7 +21,6 @@ describe('HelloComponent', function() {
 
   it('says hello in a class of hello', function() {
     var TestUtils = React.addons.TestUtils;
-    console.log('log Object.keys(React.addons)', Object.keys(React.addons));
     var hello = TestUtils.renderIntoDocument(
       <HelloComponent message='Hello World' />
     );

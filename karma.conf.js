@@ -61,8 +61,8 @@ module.exports = function(config) {
       }
     },
 
-  // TODO merge karma.conf's webpack config and main app webpack config?
-  //  webpack: webpackConfig,
+    // TODO merge karma.conf's webpack config and main app webpack config?
+    // webpack: webpackConfig,
 
     webpackServer: {
       noInfo: true // don't spam console when running karma

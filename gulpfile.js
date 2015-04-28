@@ -164,7 +164,7 @@ gulp.task('sass', function() {
 
 // webpack the javascript
 gulp.task('webpack', function(done) {
-
+/* eslint-disable */
   webpack(buildDevCfg).run(function(err, stats) {
     if (err) { throw new gutil.PluginError('webpack', err); }
 
@@ -181,6 +181,7 @@ gulp.task('webpack', function(done) {
     done();
   });
 });
+/* eslint-enable */
 
 // copy static and then build js
 gulp.task('build:dev', ['copy', 'sass', 'webpack']);

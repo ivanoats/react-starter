@@ -96,24 +96,12 @@ gulp.task('eslint-backend', function() {
 gulp.task('eslint', ['eslint-frontend', 'eslint-backend']);
 
 // ----------------------------------------------------------------------------
-// JSCS - JavaScript Code Style
-// ----------------------------------------------------------------------------
-gulp.task('jscs', function() {
-  return gulp
-    .src([].concat(
-      FRONTEND_FILES,
-      BACKEND_FILES
-    ))
-    .pipe(jscs(_jsonCfg('.jscsrc')));
-});
-
-// ----------------------------------------------------------------------------
 // Check Code Quality
 // ----------------------------------------------------------------------------
 
-gulp.task('check', ['jscs', 'eslint']);
-gulp.task('check:ci', ['jscs', 'eslint']);
-gulp.task('check:all', ['jscs', 'eslint']);
+gulp.task('check', ['eslint']);
+gulp.task('check:ci', ['eslint']);
+gulp.task('check:all', ['eslint']);
 
 // ----------------------------------------------------------------------------
 // Cleaning

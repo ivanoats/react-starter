@@ -1,6 +1,6 @@
 # React Starter Template
 
-[![Build Status](https://api.shippable.com/projects/56187d45423d0e0c009c8aeb/badge?branchName=master)](https://app.shippable.com/projects/55078e185ab6cc13529dea4d/builds/latest)
+[![Build Status](https://api.shippable.com/projects/56187c8d1895ca44741cb784/badge?branchName=master)](https://app.shippable.com/projects/56187c8d1895ca44741cb784/builds/latest)
 [![Build Status](https://travis-ci.org/ivanoats/react-starter.svg?branch=master)](https://travis-ci.org/ivanoats/react-starter)
 [![Code Climate](https://codeclimate.com/github/ivanoats/react-starter/badges/gpa.svg)](https://codeclimate.com/github/ivanoats/react-starter)
 [![bitHound Score](https://www.bithound.io/github/ivanoats/react-starter/badges/score.svg)](https://www.bithound.io/github/ivanoats/react-starter)

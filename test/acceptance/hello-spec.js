@@ -25,8 +25,8 @@ describe('home page acceptance test', function() {
     var browser = this.browser;
     browser.get(URL)
       .then(function() {
-      expect(browser.title()).to.become('React Starter').and.notify(done);
-    });
+        expect(browser.title()).to.become('React Starter').and.notify(done);
+      });
   });
 
   it('has h1.hello with React Starter', function(done) {

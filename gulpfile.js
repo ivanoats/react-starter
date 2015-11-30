@@ -3,7 +3,6 @@ var fs            = require('fs');
 var path          = require('path');
 var gulp          = require('gulp');
 var gutil         = require('gulp-util');
-var jscs          = require('gulp-jscs');
 var karma         = require('karma').server;
 var eslint        = require('gulp-eslint');
 var mocha         = require('gulp-mocha');

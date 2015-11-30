@@ -1,5 +1,3 @@
-'use strict';
-
 var request = require('supertest');
 describe('heartbeat api', function() {
 
@@ -22,9 +20,9 @@ describe('heartbeat api', function() {
       .expect('Content-Type', /json/)
       .expect(200)
       .end( function(err) {
-          if (err) { return done(err); }
-          done();
-        });
+        if (err) { return done(err); }
+        done();
+      });
     });
   });
 });

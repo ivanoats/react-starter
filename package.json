@@ -50,7 +50,7 @@
     "chai-as-promised": "^5.0.0",
     "colors": "^1.0.3",
     "del": "^2.0.2",
-    "eslint-plugin-react": "^3.5.1",
+    "eslint-plugin-react": "^3.16.0",
     "esprima-fb": "^15001.1.0-dev-harmony-fb",
     "extract-text-webpack-plugin": "^0.9.1",
     "gulp": "^3.8.11",

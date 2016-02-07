@@ -43,7 +43,7 @@
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
     "babel-preset-react": "^6.1.18",
-    "babel-preset-stage-0": "^6.1.18",
+    "babel-preset-stage-0": "^6.5.0",
     "blanket": "^1.1.6",
     "browser-sync": "^2.6.5",
     "chai": "^3.3.0",

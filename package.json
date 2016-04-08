@@ -36,7 +36,7 @@
     "express": "^4.13.3",
     "express-redirect": "^1.1.1",
     "lodash": "^3.10.1",
-    "react": "^0.14.0",
+    "react": "^15.0.1",
     "webpack": "^1.12.2"
   },
   "devDependencies": {

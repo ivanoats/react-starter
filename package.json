@@ -32,7 +32,7 @@
     "async": "^1.4.2",
     "babel-plugin-syntax-jsx": "^6.1.18",
     "babel-preset-es2015": "^6.1.18",
-    "compression": "^1.6.0",
+    "compression": "^1.6.2",
     "express": "^4.13.3",
     "express-redirect": "^1.1.1",
     "lodash": "^3.10.1",

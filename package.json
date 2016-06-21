@@ -49,7 +49,7 @@
     "chai": "^3.3.0",
     "chai-as-promised": "^5.0.0",
     "colors": "^1.0.3",
-    "del": "^2.0.2",
+    "del": "^2.2.1",
     "eslint-plugin-react": "^3.5.1",
     "esprima-fb": "^15001.1.0-dev-harmony-fb",
     "extract-text-webpack-plugin": "^0.9.1",

@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/UWFosterI/react-starter",
   "dependencies": {
-    "async": "^1.4.2",
+    "async": "^2.0.1",
     "babel-plugin-syntax-jsx": "^6.1.18",
     "babel-preset-es2015": "^6.1.18",
     "compression": "^1.6.0",

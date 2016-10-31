@@ -13,7 +13,7 @@
     "url": "https://github.com/UWFosterIT/react-starter"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": ">= 4"
   },
   "keywords": [
     "scholarships",

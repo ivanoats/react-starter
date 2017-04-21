@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.2.1",
-    "babel-loader": "^6.2.0",
+    "babel-loader": "^7.0.0",
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.1.18",
     "blanket": "^1.1.6",

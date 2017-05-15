@@ -45,7 +45,7 @@
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.1.18",
     "blanket": "^1.1.6",
-    "browser-sync": "^2.6.5",
+    "browser-sync": "^2.18.9",
     "chai": "^3.3.0",
     "chai-as-promised": "^5.0.0",
     "colors": "^1.0.3",
